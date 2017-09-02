@@ -1,3 +1,4 @@
+
 Markers = new Mongo.Collection('markers'); 
 
 Markers.allow({  
