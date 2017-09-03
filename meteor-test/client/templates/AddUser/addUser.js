@@ -16,7 +16,7 @@ Template.addUser.events({
 			isNotEmpty(major) &&
 			isNotEmpty(emerCell) ){
 
-			Meteor.call('addJokes', userName , bloodType , faculty , major , emerCell);
+			Meteor.call('addUserInfo', userName , bloodType , faculty , major , emerCell);
 
 			event.target.userName.value = "";
 			event.target.bloodType.value = "";
@@ -27,7 +27,7 @@ Template.addUser.events({
 			Bert.alert("Your Joke Was Posted!", "success", "growl-top-right");
 
 		} else {
-			
+
 			Bert.alert("something went wrong", "danger", "growl-top-right");
 		}
 
