@@ -10,6 +10,7 @@ Router.configure({
 
 Router.route('/', {name: 'postsList'});
 Router.route('/map', {name: 'mapPage'});
+Router.route('/addUser',{name: 'addUser'})
 Router.route('/posts/:_id', {  
 	name: 'postPage',
 	data: function() { return Posts.findOne(this.params._id);}
@@ -38,5 +39,3 @@ var requireLogin = function() {
 
 Router.onBeforeAction('dataNotFound', {only: 'postPage'});
 Router.onBeforeAction(requireLogin, {only: 'postSubmit'});
-
-Router.route('/addUser',{name: 'addUser'})

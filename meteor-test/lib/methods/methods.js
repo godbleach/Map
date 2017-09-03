@@ -10,6 +10,6 @@ if (Meteor.isServer)
 				major : major,
 				emergencyCell : emerCell
 			});
-		}
+		},
 	});
 }
