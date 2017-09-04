@@ -47,15 +47,47 @@
     </div>
 
     <div class="col-xs-4">
-      {{#each usersInfo}}
-        {{> postUser}}
-      {{/each}}
-    </div>
+
+      <!-- Card Personal-->
+         <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse1"> Emergenza Helpme</a>
+                </h4>
+              </div>
+              <div id="collapse1" class="panel-collapse collapse in">
+               <div class="row">
+
+                    <div class="col-xs-5">
+                        <img class="card-img-top" src="iron_man.jpg" alt="Card image cap" width=160px;>
+                    </div>
+
+                    <div class="col-xs-7">
+                      <p>คณะ : วิศวกรรมศาสตร์ศรีราชา</p>
+                      <p>สาขาวิชา : วิศวกรรมคอมพิวเตอร์และสารสนเทศศาสตร์</p>
+                      <p>ชั้นปี : 1</p>
+                      <a href="#" class="btn btn-primary">Get info</a>
+                    </div>
+                  </div>
+
+                  <br>
+                  <div id="listing">
+                   <table id="resultsTable">
+                     <tbody id="results"></tbody>
+                   </table>
+                 </div>
+              </div>
+            </div>
+          </div>
+        <!-- Card Personal-->
+  </div>
+
+
   </div>
 
   <br>
-
-  <!-- <div>
+  <div>
   	<form class="main form">
   		<div class="form-group">
 	      <label class="control-label">Lat</label>
@@ -71,5 +103,5 @@
 	    </div>
 	    <input type="submit" value="Submit" class="btn btn-primary"/>
   	</form>
-  </div> -->
+  </div>
 </template>
