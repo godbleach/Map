@@ -1,7 +1,7 @@
-usersInfo = new Mongo.Collection('usersInfo');
+UsersInfo = new Mongo.Collection('usersInfo');
 
 
-usersInfo.allow({
+UsersInfo.allow({
 	insert: function(userId, doc) { return true; },
 	update: function(userId, doc) { return true; }
 
