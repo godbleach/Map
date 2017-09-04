@@ -1,0 +1,37 @@
+<template name="postUser">
+  <div class="usersInfo">
+  <!-- Card Personal-->
+     <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">{{userName}}</a>
+            </h4>
+          </div>
+          <div id="collapse1" class="panel-collapse collapse in">
+           <div class="row">
+                <div class="col-xs-5">
+                  <!-- Photo -->
+                    <img class="card-img-top" src="iron_man.jpg" alt="Card image cap" width=160px;>
+                  <!-- Photo -->
+                </div>
+                <div class="col-xs-7">
+                  <p>Faculty : {{faculty}}</p>
+                  <p>Major : {{major}}</p>
+                  <p>Emergency Cell : {{emergencyCell}}</p>
+                  <p>Blood Type : {{bloodType}}</p>
+                </div>
+           </div>
+
+              <br>
+              <div id="listing">
+               <table id="resultsTable">
+                 <tbody id="results"></tbody>
+               </table>
+             </div>
+          </div>
+        </div>
+      </div>
+    <!-- Card Personal-->
+    </div>
+</template>
