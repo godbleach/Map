@@ -49,6 +49,8 @@
     <div class="col-xs-4">
 
       <!-- Card Personal-->
+      <div class="posts page">
+        {{#each posts}}
          <div class="panel-group" id="accordion">
             <div class="panel panel-default">
               <div class="panel-heading">
@@ -57,7 +59,7 @@
                 </h4>
               </div>
               <div id="collapse1" class="panel-collapse collapse in">
-               <div class="row">
+               <!-- <div class="row">
 
                     <div class="col-xs-5">
                         <img class="card-img-top" src="iron_man.jpg" alt="Card image cap" width=160px;>
@@ -69,7 +71,11 @@
                       <p>ชั้นปี : 1</p>
                       <a href="#" class="btn btn-primary">Get info</a>
                     </div>
-                  </div>
+                  </div> -->
+
+
+                    {{> postItem}}
+
 
                   <br>
                   <div id="listing">
@@ -80,7 +86,14 @@
               </div>
             </div>
           </div>
+          {{/each}}
+        </div>
         <!-- Card Personal-->
+        <!-- <div class="sounds page">
+          {{#each sounds}}
+            {{> soundsList}}
+          {{/each}}
+        </div> -->
   </div>
 
 

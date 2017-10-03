@@ -3,6 +3,12 @@ Meteor.startup(function() {
 });
 
 Template.mapPage.helpers({
+  // sounds: function() {
+  //   return Sounds.find({});
+  // },
+  posts: function() {
+    return Posts.find({}, {sort: {submitted: -1}});
+  },
   mapOptions: function() {
     if (GoogleMaps.loaded()) {
       return {

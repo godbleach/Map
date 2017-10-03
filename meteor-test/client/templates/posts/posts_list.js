@@ -2,8 +2,8 @@ Template.postsList.helpers({
   posts: function() {
     return Posts.find({}, {sort: {submitted: -1}});
   },
-  UsersInfo: function() {
-    return UsersInfo.find({}, {sort: {submitted: -1}});
+  usersInfo: function() {
+    return UsersInfo.find({});
   }
 
 });
