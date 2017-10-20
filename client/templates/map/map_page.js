@@ -249,19 +249,19 @@ Template.mapPage.onCreated(function() {
 
           addResult(place,j,m);
 
-          // console.log(place)
+          console.log(place)
 
-          // google.maps.event.addListener(m, 'click', showInfoWindow(place));
+          google.maps.event.addListener(m, 'click', showInfoWindow(place));
           google.maps.event.addListener(m, 'click', function(event) {
-            // console.log(place)
-            // infowindow.setContent(place.name);
+            console.log(place)
+            infowindow.setContent(place.name);
             infowindow.open(map.instance, this);
             buildIWContent(place);
           });
         }
 
         function buildIWContent(place) {
-          // console.log(place);
+          console.log(place);
           if(place.icon){
             document.getElementById('iw-icon').style.display = '';
             document.getElementById('iw-icon').innerHTML = '<img class="hotelIcon" ' +
