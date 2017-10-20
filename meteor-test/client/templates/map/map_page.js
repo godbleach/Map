@@ -6,9 +6,16 @@ Template.mapPage.helpers({
   // sounds: function() {
   //   return Sounds.find({});
   // },
+
   posts: function() {
     return Posts.find({}, {sort: {submitted: -1}});
   },
+
+  usersInfo: function() {
+    // console.log("here");
+    return UsersInfo.find({}, {sort: {submitted: -1}});
+  },
+
   mapOptions: function() {
     if (GoogleMaps.loaded()) {
       return {
@@ -118,7 +125,7 @@ Template.mapPage.onCreated(function() {
       //   // Markers.insert({ lat: event.latLng.lat(), lng: event.latLng.lng() });
       // });
 
-       console.log(document.getElementById('info-content'));
+      //  console.log(document.getElementById('info-content'));
 
         var markers = {};
         var geocoder = new google.maps.Geocoder;
@@ -366,6 +373,7 @@ Template.mapPage.events({
   'click .btn': function(e){
     e.preventDefault();
     var postId = this._id;
+
     Posts.remove(postId);
   }
 })

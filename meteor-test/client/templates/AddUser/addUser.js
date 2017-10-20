@@ -3,32 +3,30 @@ Template.addUser.rendered = function() {
 }
 
 Template.addUser.events({
-	"submit .add-info": function() {
-		var userName = event.target.userName.value;
-		var bloodType = event.target.bloodType.value;
-		var faculty = event.target.faculty.value;
-		var major = event.target.major.value;
-		var emerCell = event.target.emerCell.value;
-		var latitude = event.target.latitude.value;
-		var	longitude = event.target.longitude.value;
+	'submit form': function(e) {
+		e.preventDefault();
+
+		var info = {
+      userName: $(e.target).find('[name=userName]').val(),
+      bloodType: $(e.target).find('[name=bloodType]').val(),
+			faculty: $(e.target).find('[name=faculty]').val(),
+			major: $(e.target).find('[name=major]').val(),
+			emerCell: $(e.target).find('[name=emerCell]').val(),
+    };
 
 		if (isNotEmpty(userName) &&
 			isNotEmpty(bloodType) &&
 			isNotEmpty(faculty) &&
 			isNotEmpty(major) &&
-			isNotEmpty(emerCell) &&
-			isNotEmpty(latitude) &&
-			isNotEmpty(longitude)){
+			isNotEmpty(emerCell)){
 
-			Meteor.call('addUserInfo', userName , bloodType , faculty , major , emerCell,latitude,longitude);
+			Meteor.call('addUserInfo', info);
 
-			event.target.userName.value = "";
-			event.target.bloodType.value = "";
-			event.target.faculty.value = "";
-			event.target.major.value = "";
-			event.target.emerCell.value = "";
-			event.target.latitude.value = "";
-			event.target.longitude.value = "";
+			e.target.userName.value = "";
+			e.target.bloodType.value = "";
+			e.target.faculty.value = "";
+			e.target.major.value = "";
+			e.target.emerCell.value = "";
 
 			Bert.alert("Your Joke Was Posted!", "success", "growl-top-right");
 
