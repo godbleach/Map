@@ -6,6 +6,7 @@ UsersInfo.allow({
 	update: function(userId, doc) { return true; }
 
 });
+<<<<<<< HEAD
 
 Meteor.methods({
 	// addUserInfo: function(info)
@@ -17,3 +18,5 @@ Meteor.methods({
 	// 	};
 	// },
 });
+=======
+>>>>>>> parent of 3757a89... เขียน log ยังไม่ได้นะ

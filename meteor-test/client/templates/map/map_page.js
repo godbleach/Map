@@ -368,6 +368,7 @@ Template.mapPage.onCreated(function() {
 
 	});
 });
+<<<<<<< HEAD
 
 Template.mapPage.events({
   'click .btn': function(e){
@@ -377,3 +378,5 @@ Template.mapPage.events({
     Posts.remove(postId);
   }
 })
+=======
+>>>>>>> parent of 3757a89... เขียน log ยังไม่ได้นะ
