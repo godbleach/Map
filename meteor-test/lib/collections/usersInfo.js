@@ -6,6 +6,7 @@ UsersInfo.allow({
 	update: function(userId, doc) { return true; }
 
 });
+<<<<<<< HEAD
 
 Meteor.methods({
 	addUserInfo: function(info)
@@ -17,3 +18,5 @@ Meteor.methods({
 		};
 	},
 });
+=======
+>>>>>>> 47af928d9edf3bd5a9906a0baac9d0bcc48daf2d

@@ -368,6 +368,7 @@ Template.mapPage.onCreated(function() {
 
 	});
 });
+<<<<<<< HEAD
 
 Template.mapPage.events({
   'click .btn': function(e){
@@ -377,3 +378,5 @@ Template.mapPage.events({
     Posts.remove(postId);
   }
 })
+=======
+>>>>>>> 47af928d9edf3bd5a9906a0baac9d0bcc48daf2d
