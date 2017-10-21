@@ -1,5 +1,5 @@
 <template name="mapPage">
-
+{{#if currentUser}}
   <div class="row">
 
     <div class="col-xs-8">
@@ -83,5 +83,7 @@
   </div>
 
   <br>
-
+{{else}}
+<center><h1>Please  <a href="/">login</a> </h1></center>
+{{/if}}
 </template>
