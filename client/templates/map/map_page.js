@@ -361,3 +361,11 @@ Template.mapPage.onCreated(function() {
 
 	});
 });
+
+Template.mapPage.events({
+  'click .btn': function(e){
+    e.preventDefault();
+    var postId = this._id;
+    Posts.remove(postId);
+  }
+})
