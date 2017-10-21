@@ -1,36 +1,36 @@
-Tracker.autorun(function(){
-	if(Meteor.userId()){
-		Router.go("/map");
-	}
-});
-
-
-
-Template.login.events({
-	"submit .form-signin": function(event){
+Template.signup.events({
+	"submit .form-signup": function(event){
+		var username = trimInput(event.target.username.value);
 		var email = trimInput(event.target.email.value);
 		var password = trimInput(event.target.password.value);
+		var password2 = trimInput(event.target.password2.value);
 
 		if(isNotEmpty(email) &&
+			isNotEmpty(username) &&
 			isNotEmpty(password) &&
 			isEmail(email) &&
-			isValidPassword(password)){
+			areValidPasswords(password, password2)) {
 
-			Meteor.loginWithPassword(email, password, function(err){
-				if(err) {
+			Accounts.createUser({
+				username: username,
+				email: email,
+                password: password
+                
+			}, function(err){
+				if(err){
 					Bert.alert(err.reason, "danger", "growl-top-right");
-					return false;
 				} else {
+					Bert.alert("Account Created! You Are Now Logged In", "success", "growl-top-right");
 					Router.go("/map");
-					Bert.alert("You are now logged in", "success", "growl-top-right");
+
 				}
 			});
-
+			
 		}
 
-		return false // Prevent Submit
-	}
+		return false; // prevent submit
 
+	}
 });
 
 // Validation Rules
@@ -62,6 +62,18 @@ isEmail = function(value) {
 isValidPassword = function(password){
 	if(password.length <6) {
 		Bert.alert("Password must be at least 6 characters", "danger", "growl-top-right");
+		return false;
+	}
+	return true;
+};
+
+// Match Password
+areValidPasswords = function(password, confirm) {
+	if(!isValidPassword(password)) {
+		return false;
+	}
+	if(password !== confirm) {
+		Bert.alert("Passwords do not match", "danger", "growl-top-right");
 		return false;
 	}
 	return true;

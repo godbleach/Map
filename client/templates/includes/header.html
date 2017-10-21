@@ -7,13 +7,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{{pathFor 'postsList'}}">SE_Project</a>
+      <a class="navbar-brand" href="{{pathFor 'login'}}">Emergenza</a>
     </div>
     <div class="collapse navbar-collapse" id="navigation">
       
-      <ul class="nav navbar-nav navbar-right">
+      <!-- <ul class="nav navbar-nav navbar-right">
         {{> loginButtons}}
-      </ul>
+      </ul> -->
 
       <ul class="nav navbar-nav navbar-right">  
         {{#if currentUser}}
@@ -21,8 +21,14 @@
         {{/if}}
       </ul>
 
-      <ul class="nav navbar-nav navbar-right">
+      <!-- <ul class="nav navbar-nav navbar-right">
         <li><a href="{{pathFor 'mapPage'}}">Map</a></li>
+      </ul> -->
+
+      <ul class="nav navbar-nav navbar-right">
+        {{#if currentUser}}
+          <li><a class="logout" href="#">logout</a></li>
+        {{/if}}
       </ul>
 
     </div>
