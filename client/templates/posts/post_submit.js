@@ -17,8 +17,8 @@ Template.postSubmit.events({
     e.preventDefault();
 
     var post = {
-      url: $(e.target).find('[name=url]').val(),
-      title: $(e.target).find('[name=title]').val(),
+      // url: $(e.target).find('[name=url]').val(),
+      // title: $(e.target).find('[name=title]').val(),
       userName : $(e.target).find('[name=userName]').val(),
       firstName : $(e.target).find('[name=firstName]').val(),
       lastName : $(e.target).find('[name=lastName]').val(),
