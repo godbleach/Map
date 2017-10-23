@@ -51,24 +51,39 @@
               <div class="panel-heading">
                 <h4 class="panel-title">
 
-                  <a data-toggle="collapse" data-parent="#accordion" href=#{{_id}}>{{firstName}} {{lastName}}</a>
-                  <button class="btn btn-primary btn-xs">
-                    <span class="glyphicon glyphicon-ok"></span>
-                  </button>
+                  <div class="row">
+                    <div class="col-xs-10">
+                      <a data-toggle="collapse" data-parent="#accordion" href=#{{_id}}>{{firstName}} {{lastName}}</a>
+                    </div>
+                    <div class="col-xs-2">
+                      <button class="btn btn-primary btn-s btn-right"><span class="glyphicon glyphicon-ok"></span></button>
+                    </div>
+                  </div>
 
                 </h4>
               </div>
-              <div id={{_id}} class="panel-collapse collapse in">
+              <div class="row">
+                <div id={{_id}} class="panel-collapse collapse in">
+                  <div class="col-xs-7">
+                    
+                          {{> postItem}}
 
-                    {{> postItem}}
+                        <div id="listing">
+                         <table id="resultsTable">
+                           <tbody id="results">
+                           </tbody>
+                         </table>
+                       </div>
+                  </div>
 
-                  <br>
-                  <div id="listing">
-                   <table id="resultsTable">
-                     <tbody id="results"></tbody>
-                   </table>
-                 </div>
+                  <div class="col-xs-5">
+                    <img src="iron_man.jpg" class="photo">
+                  </div>
+
               </div>
+            </div>
+
+
             </div>
           </div>
           {{/each}}

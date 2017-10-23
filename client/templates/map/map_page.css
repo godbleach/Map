@@ -1,3 +1,10 @@
+.photo {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 3px;
+    width: 150px;
+}
+
 .btn {
   background: #008000;
   color: #FAF0E6;
