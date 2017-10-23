@@ -115,7 +115,7 @@ Template.mapPage.onCreated(function() {
       //  google.maps.event.addListener(map.instance, 'click', function(event) {
       //   var point = {lat: event.latLng.lat(), lng: event.latLng.lng()};
       //   Meteor.call('markInsert',point);
-      //   // Markers.insert({ lat: event.latLng.lat(), lng: event.latLng.lng() });
+        // Markers.insert({ lat: event.latLng.lat(), lng: event.latLng.lng() });
       // });
 
        console.log(document.getElementById('info-content'));
@@ -367,5 +367,7 @@ Template.mapPage.events({
     e.preventDefault();
     var postId = this._id;
     Posts.remove(postId);
+    // console.log(postId);
+    // Markers.remove()
   }
 })
