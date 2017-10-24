@@ -1,10 +1,12 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
-import Images from '/lib/images.collection.js';
+import { Sounds, Images } from '/lib/files.collections.js';
 import './upload.html';
 
 Template.uploadedFiles.helpers({
   uploadedFiles: function () {
-    return Images.find();
+    console.log(Images.find());
+    console.log(Sounds.find());
+    return Images.find() ;
   }
 });

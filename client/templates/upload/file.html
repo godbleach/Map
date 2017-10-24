@@ -1,0 +1,21 @@
+<template name='file'>
+  {{#each image in imageFile.each}}
+    <img src="{{image.link}}" alt="{{image.name}}" />
+    <br>
+  {{/each}}
+  <hr>
+  {{#each sound in audioFile.each}}
+  <audio height="auto" controls preload="auto" autoplay>
+    <source src="{{sound.link}}" type="{{sound.type}}" />
+  </audio>
+    <br>
+  {{/each}}
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <!-- {{#with audioFile.with}}
+    <audio height="auto" controls preload="auto" autoplay>
+      <source src="{{link}}?play=true" type="{{type}}" />
+    </audio>
+  {{else}}
+    Loading Audio...
+  {{/with}} -->
+</template>
