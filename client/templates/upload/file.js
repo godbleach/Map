@@ -1,5 +1,5 @@
 import { Template } from 'meteor/templating';
-import { Sounds, Images } from '/lib/files.collections.js';
+import { Sounds, Images } from '/lib/collections/files.js';
 import './file.html';
 
 Template.file.helpers({

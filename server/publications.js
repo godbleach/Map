@@ -9,3 +9,11 @@ Meteor.publish('markers', function() {
 Meteor.publish('usersInfo', function() {
   return UsersInfo.find();
 });
+
+Meteor.publish('Images', function() {
+  return Images.find();
+});
+
+Meteor.publish('Sounds', function() {
+  return Sounds.find();
+});
