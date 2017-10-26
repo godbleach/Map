@@ -22,84 +22,7 @@ Template.mapPage.helpers({
         center: new google.maps.LatLng(13.1641, 100.9217),
         zoom: 12,
         // styles: [
-        //     {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
-        //     {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
-        //     {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
-        //     {
-        //       featureType: 'administrative.locality',
-        //       elementType: 'labels.text.fill',
-        //       stylers: [{color: '#d59563'}]
-        //     },
-        //     {
-        //       featureType: 'poi',
-        //       elementType: 'labels.text.fill',
-        //       stylers: [{color: '#d59563'}]
-        //     },
-        //     {
-        //       featureType: 'poi.park',
-        //       elementType: 'geometry',
-        //       stylers: [{color: '#263c3f'}]
-        //     },
-        //     {
-        //       featureType: 'poi.park',
-        //       elementType: 'labels.text.fill',
-        //       stylers: [{color: '#6b9a76'}]
-        //     },
-        //     {
-        //       featureType: 'road',
-        //       elementType: 'geometry',
-        //       stylers: [{color: '#38414e'}]
-        //     },
-        //     {
-        //       featureType: 'road',
-        //       elementType: 'geometry.stroke',
-        //       stylers: [{color: '#212a37'}]
-        //     },
-        //     {
-        //       featureType: 'road',
-        //       elementType: 'labels.text.fill',
-        //       stylers: [{color: '#9ca5b3'}]
-        //     },
-        //     {
-        //       featureType: 'road.highway',
-        //       elementType: 'geometry',
-        //       stylers: [{color: '#746855'}]
-        //     },
-        //     {
-        //       featureType: 'road.highway',
-        //       elementType: 'geometry.stroke',
-        //       stylers: [{color: '#1f2835'}]
-        //     },
-        //     {
-        //       featureType: 'road.highway',
-        //       elementType: 'labels.text.fill',
-        //       stylers: [{color: '#f3d19c'}]
-        //     },
-        //     {
-        //       featureType: 'transit',
-        //       elementType: 'geometry',
-        //       stylers: [{color: '#2f3948'}]
-        //     },
-        //     {
-        //       featureType: 'transit.station',
-        //       elementType: 'labels.text.fill',
-        //       stylers: [{color: '#d59563'}]
-        //     },
-        //     {
-        //       featureType: 'water',
-        //       elementType: 'geometry',
-        //       stylers: [{color: '#17263c'}]
-        //     },
-        //     {
-        //       featureType: 'water',
-        //       elementType: 'labels.text.fill',
-        //       stylers: [{color: '#515c6d'}]
-        //     },
-        //     {
-        //       featureType: 'water',
-        //       elementType: 'labels.text.stroke',
-        //       stylers: [{color: '#17263c'}]
-        //     }
+
         //   ]
 
       };
@@ -107,22 +30,18 @@ Template.mapPage.helpers({
   }
 });
 
+// Meteor.subscribe('markers');
+
 Meteor.subscribe('markers');
 
 Template.mapPage.onCreated(function() {
 
   // We can use the `ready` callback to interact with the map API once the map is ready.
 	GoogleMaps.ready('mapEx', function(map) {
-	    // Add a marker to the map once it's ready
-	    // var marker1 = new google.maps.Marker({
-	    //   position: map.options.center,
-	    //   map: map.instance
-      // );
 
        google.maps.event.addListener(map.instance, 'click', function(event) {
         var point = {userId: Meteor.userId(),lat: event.latLng.lat(), lng: event.latLng.lng()};
         Meteor.call('markInsert',point);
-        Markers.insert({ lat: event.latLng.lat(), lng: event.latLng.lng() });
       });
 
        console.log(document.getElementById('info-content'));
@@ -143,10 +62,9 @@ Template.mapPage.onCreated(function() {
         var directionsDisplay = new google.maps.DirectionsRenderer;
         directionsDisplay.setMap(map.instance);
 
-
         Markers.find().observe({
           added: function(document) {
-
+            Session.set('currentMark',document.userId);
             var latlng = new google.maps.LatLng(document.lat, document.lng);
 
             geocoder.geocode({'location': latlng}, function(results, status) {
@@ -194,35 +112,7 @@ Template.mapPage.onCreated(function() {
                 }
               }
             );
-
-            // // Create a marker for this document
-            // var marker = new google.maps.Marker({
-            //   draggable: true,
-            //   animation: google.maps.Animation.DROP,
-            //   position: new google.maps.LatLng(document.lat, document.lng),
-            //   map: map.instance,
-            //   // icon: '/map-marker-icon.png',
-            //   // We store the document _id on the marker in order
-            //   // to update the document within the 'dragend' event below.
-            //   id: document._id
-            // });
-            // var infowindow = new google.maps.InfoWindow({
-            //   content: "Hello World"
-            // });
-
-            // This listener lets us drag markers on the map and update their corresponding document.
-            // google.maps.event.addListener(marker, 'dragend', function(event) {
-            //   Markers.update(marker.id, { $set: { lat: event.latLng.lat(), lng: event.latLng.lng() }});
-            // });
-            // google.maps.event.addListener(marker, 'click', function(event) {
-            //   infowindow.open(map.instance, marker);
-            // });
-
-
-            // Store this marker instance within the markers object.
-            // markers[document._id] = marker;
-            // infowindow.open(map, marker);
-            // map.instance.setCenter(new google.maps.LatLng(document.lat, document.lng));
+            console.log('observe - add - ' + document._id + ' ' + document.userId);
           },
           changed: function(newDocument, oldDocument) {
             markers[newDocument._id].setPosition({ lat: newDocument.lat, lng: newDocument.lng });
@@ -237,9 +127,9 @@ Template.mapPage.onCreated(function() {
 
             // Remove the reference to this marker instance
             delete markers[oldDocument._id];
+            console.log('observe - removed - ' + oldDocument._id);
           }
         });
-
 
         function createMarker(place,j) {
           var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (j % 26));
@@ -256,9 +146,9 @@ Template.mapPage.onCreated(function() {
 
           addResult(place,j,m);
 
-          console.log(place)
+          // console.log(place)
 
-          google.maps.event.addListener(m, 'click', showInfoWindow(place));
+          // google.maps.event.addListener(m, 'click', showInfoWindow(place));
           google.maps.event.addListener(m, 'click', function(event) {
             console.log(place)
             infowindow.setContent(place.name);
@@ -268,7 +158,7 @@ Template.mapPage.onCreated(function() {
         }
 
         function buildIWContent(place) {
-          console.log(place);
+          // console.log(place);
           if(place.icon){
             document.getElementById('iw-icon').style.display = '';
             document.getElementById('iw-icon').innerHTML = '<img class="hotelIcon" ' +
@@ -371,11 +261,10 @@ Template.mapPage.onCreated(function() {
 
 Template.mapPage.events({
   'click .btn': function(e){
-
     e.preventDefault();
      var markId = Markers.findOne({userId: this.userId});
     // console.log(markId);
     Markers.remove(markId._id);
-    
+
   },
 })
