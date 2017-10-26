@@ -1,7 +1,15 @@
+import { Sounds, Images } from '/lib/collections/files.js';
+import './post_item.html';
+
 Template.postItem.helpers({
 
-  ownPost: function() {    
-  	return this.userId === Meteor.userId();  
+  imageFile: function() {
+    console.log(this.userId);
+    return Images.find({"userId":this.userId});
+  },
+
+  ownPost: function() {
+  	return this.userId === Meteor.userId();
   },
 
   domain: function() {

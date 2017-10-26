@@ -3,7 +3,7 @@
 
   <div class="post">
     <div class="post-content">
-      <h3><a href="#">{{firstName}} {{lastName}}</a></h3>
+      <h3><a href={{pathFor 'postPage'}}>{{firstName}} {{lastName}}</a></h3>
       <!-- <h1>Name : {{firstName}} {{lastName}}</h4> -->
       <p>
         Name : {{firstName}} {{lastName}} <br>
@@ -15,6 +15,12 @@
       	<!-- submitted by {{author}} -->
       	<!-- {{#if ownPost}}<a href="{{pathFor 'postEdit'}}">Edit</a>{{/if}} -->
       </p>
+
+      {{#each image in imageFile.each}}
+        <img src="{{image.link}}" alt="{{image.name}}" />
+        <br>
+      {{/each}}
+      
     </div>
     <!-- <a href="{{pathFor 'postPage'}}" class="discuss btn btn-default">Discuss</a> -->
   </div>

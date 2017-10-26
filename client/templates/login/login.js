@@ -1,8 +1,8 @@
-Tracker.autorun(function(){
-	if(Meteor.userId()){
-		Router.go("/map");
-	}
-});
+// Tracker.autorun(function(){
+// 	if(Meteor.userId()){
+// 		Router.go("/map");
+// 	}
+// });
 
 
 
