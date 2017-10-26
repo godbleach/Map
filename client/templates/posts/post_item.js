@@ -4,7 +4,7 @@ import './post_item.html';
 Template.postItem.helpers({
 
   imageFile: function() {
-    console.log(this.userId);
+    // console.log(this.userId);
     return Images.find({"userId":this.userId});
   },
 

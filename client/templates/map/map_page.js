@@ -7,7 +7,14 @@ Template.mapPage.helpers({
   //   return Sounds.find({});
   // },
   posts: function() {
-    return Posts.find({}, {sort: {submitted: -1}});
+    // var allMark = Markers.distinct("userId");
+    var allMark = _.uniq(Markers.find({}, {
+      sort: {userId: 1}, fields: {userId: true}
+    }).fetch().map(function(x) {
+        return x.userId;
+    }), true);
+    // console.log(allMark);
+    return Posts.find({userId: {$in:allMark} });
   },
   mapOptions: function() {
     if (GoogleMaps.loaded()) {
@@ -112,11 +119,11 @@ Template.mapPage.onCreated(function() {
 	    //   map: map.instance
       // );
 
-      //  google.maps.event.addListener(map.instance, 'click', function(event) {
-      //   var point = {lat: event.latLng.lat(), lng: event.latLng.lng()};
-      //   Meteor.call('markInsert',point);
-        // Markers.insert({ lat: event.latLng.lat(), lng: event.latLng.lng() });
-      // });
+       google.maps.event.addListener(map.instance, 'click', function(event) {
+        var point = {userId: Meteor.userId(),lat: event.latLng.lat(), lng: event.latLng.lng()};
+        Meteor.call('markInsert',point);
+        Markers.insert({ lat: event.latLng.lat(), lng: event.latLng.lng() });
+      });
 
        console.log(document.getElementById('info-content'));
 
@@ -364,10 +371,11 @@ Template.mapPage.onCreated(function() {
 
 Template.mapPage.events({
   'click .btn': function(e){
+
     e.preventDefault();
-    var postId = this._id;
-    Posts.remove(postId);
-    // console.log(postId);
-    // Markers.remove()
-  }
+     var markId = Markers.findOne({userId: this.userId});
+    // console.log(markId);
+    Markers.remove(markId._id);
+    
+  },
 })
