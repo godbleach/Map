@@ -1,6 +1,6 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
-import { Sounds, Images } from '/lib/collections/files.js';
+import { Sounds, Images, Videos } from '/lib/collections/files.js';
 import './upload.html';
 
 function getExtension(filename) {
@@ -25,6 +25,16 @@ function isAudio(filename) {
   var ext = getExtension(filename);
   switch (ext.toLowerCase()) {
   case 'mp3':
+      //etc
+      return true;
+  }
+  return false;
+};
+
+function isVideo(filename) {
+  var ext = getExtension(filename);
+  switch (ext.toLowerCase()) {
+  case 'mp4':
       //etc
       return true;
   }
@@ -63,6 +73,13 @@ Template.uploadForm.events({
         }
         else if ( isAudio(file.name) ) {
           var uploadInstance = Sounds.insert({
+            file: file,
+            streams: 'dynamic',
+            chunkSize: 'dynamic',
+          }, false);
+        }
+        else if ( isVideo(file.name) ) {
+          var uploadInstance = Videos.insert({
             file: file,
             streams: 'dynamic',
             chunkSize: 'dynamic',

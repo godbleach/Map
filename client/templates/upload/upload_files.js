@@ -1,6 +1,6 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
-import { Sounds, Images } from '/lib/collections/files.js';
+import { Sounds, Images, Videos } from '/lib/collections/files.js';
 import './upload.html';
 
 Template.uploadedFiles.helpers({

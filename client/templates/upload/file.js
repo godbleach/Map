@@ -1,5 +1,5 @@
 import { Template } from 'meteor/templating';
-import { Sounds, Images } from '/lib/collections/files.js';
+import { Sounds, Images, Videos } from '/lib/collections/files.js';
 import './file.html';
 
 Template.file.helpers({
@@ -8,5 +8,8 @@ Template.file.helpers({
   },
   audioFile() {
     return Sounds.find({}, {sort: {submitted: -1}});
+  }
+  videoFile() {
+    return Videos.find({}, {sort: {submitted: -1}});
   }
 });
