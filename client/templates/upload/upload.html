@@ -1,12 +1,57 @@
 <template name="upload">
-  <div>
+
+  <input type="file" id="fileInput" style="display:none"/>
+  <div class="ui fullscreen modal">
+    <div class="ui huge header">
+      <p style="font-size:36px;">Upload</p>
+    </div>
+    <div class="content">
+      <div class="ui center aligned segment">
+        <br>
+        {{#with currentUpload}}
+
+          <label class="circular ui icon button" data-value="{{progress.get}}" data-total="100" id="ex">
+            <i class="massive icons">
+              <i class="huge loading circle notched icon"></i>
+              <i class="big cloud upload icon"></i>
+            </i>
+            </label>
+          <br><br>
+          <p style="font-size:72px;">{{file.name}}</p>
+
+          <div class="ui indicating progress" data-value="{{progress.get}}" data-total="100" id="ex">
+            <div class="bar">
+              <div class="progress"></div>
+            </div>
+            <div class="label">Uploading Files {{progress.get}}%</div>
+          </div>
+
+        {{else}}
+
+          <label for="fileInput" class="circular ui icon button">
+            <i class="massive icons">
+              <i class="huge circle notched icon"></i>
+              <i class="big cloud upload icon"></i>
+            </i>
+            </label>
+          <!-- <input type="file" id="fileInput" style="display:none"/> -->
+          <br><br>
+          <p style="font-size:72px;">Choose File...</p>
+
+        {{/with}}
+      </div>
+    </div>
+
+    </div>
+
+  <!-- <div>
     <h3>{{username}}</h3>
   </div>
     {{> uploadForm}}
 
     {{> uploadedFiles}}
 
-    {{> file}}
+    {{> file}} -->
 </template>
 
 
@@ -34,3 +79,37 @@
       <div>No files uploaded, yet</div>
     {{/if}}
 </template> -->
+
+
+
+<!-- {{#with currentUpload}}
+  <label for="file" class="circular ui icon button">
+    <i class="massive icons">
+      <i class="huge loading circle notched icon"></i>
+      <i class="big cloud upload icon"></i>
+    </i>
+    </label>
+  <br><br>
+  <p style="font-size:72px;">{{file.name}}</p>
+
+  <div class="ui indicating progress" data-value="{{progress.get}}" data-total="100" id="ex">
+    <div class="bar">
+      <div class="progress"></div>
+    </div>
+    <div class="label">Uploading Files</div>
+  </div>
+
+
+{{else}}
+
+<label for="file" class="circular ui icon button">
+  <i class="massive icons">
+    <i class="huge circle notched icon"></i>
+    <i class="big cloud upload icon"></i>
+  </i>
+  </label>
+<input type="file" id="fileInput" style="display:none">
+<br><br>
+<p style="font-size:72px;">Choose File...</p>
+
+{{/with}} -->
