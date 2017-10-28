@@ -1,24 +1,43 @@
 <template name="postItem">
 
-  <div class="content active">
-    <div class="ui items">
-      <div class="item">
-        <div class="image">
-          <img src="/images/wireframe/image.png">
-        </div>
+  <div class="ui styled accordion">
+    <div class="title active">
+      <i class="dropdown icon"></i>
+      {{firstName}} {{lastName}}
+    </div>
+    <div class="content active">
 
-        <div class="content">
-          <a class="header">Header</a>
-          <div class="ui list">
-            <div class="item"> Name : {{firstName}} {{lastName}} </div>
-            <div class="item"> Blood Type : {{bloodType}} </div>
-            <div class="item"> Faculty : {{faculty}} </div>
-            <div class="item"> Major : {{major}} </div>
-            <div class="item"> Emergency Cell : {{emerCell}}</div>
+      <div class="ui items">
+        <div class="item">
+          <div class="image">
+            <img src="/images/wireframe/image.png">
           </div>
+
+          <div class="content">
+            <a class="header">Header</a>
+            <div class="ui list">
+              <div class="item"> Name : {{firstName}} {{lastName}} </div>
+              <div class="item"> Blood Type : {{bloodType}} </div>
+              <div class="item"> Faculty : {{faculty}} </div>
+              <div class="item"> Major : {{major}} </div>
+              <div class="item"> Emergency Cell : {{emerCell}}</div>
+            </div>
+          </div>
+          <!-- end content-->
         </div>
-        <!-- end content-->
       </div>
+      <!-- end item -->
+
+      <div class="ui checkbox">
+        <input type="checkbox" name="example">
+        <label>Make my profile visible</label>
+      </div>
+
+      <button class="ui right floated labeled icon button">
+        <i class="remove icon"></i>
+        Pause
+      </button>
+
     </div>
   </div>
 
