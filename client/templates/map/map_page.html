@@ -1,16 +1,11 @@
 <template name="mapPage">
 {{#if currentUser}}
-  <div class="row">
 
-    <div class="col-xs-8">
+  {{#unless haveMark}}
+    <div class="ui grid">
+    <div class="sixteen wide column"></div>
+    <div class="ten wide column">
       <div class="map-container">
-        <!-- <iframe
-          width="1140"
-          height="500"
-          frameborder="0" style="border:0"
-          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDzgiOABUWqCUWLMX6bXkRnPn-K6jqfua0
-            &q=record+stores+in+Seattle" allowfullscreen>
-        </iframe> -->
         {{> googleMap name="mapEx" options=mapOptions}}
         <div style="display: none">
           <div id="info-content">
@@ -40,32 +35,83 @@
         </div>
 
       </div>
+      <!-- map-container end -->
     </div>
+    <div class="six wide column">
+      {{#each posts}}
+        <div class="ui styled accordion">
+          <div class="title active">
+            <i class="dropdown icon"></i>
+            {{firstName}} {{lastName}}
+          </div>
+          {{>postItem}}
+        </div>
+      {{/each}}
 
-    <div class="col-xs-4">
+    </div>
+  </div>
 
+  <div class="ui grid">
+    <div class="sixteen wide column">
+
+      <div class="ten wide column map-container">
+        hi
+        <!-- <div class="map-container"> -->
+          <div style="display: none">
+            <div id="info-content">
+              <table>
+                <tr id="iw-url-row" class="iw_table_row">
+                  <td id="iw-icon" class="iw_table_icon"></td>
+                  <td id="iw-url"></td>
+                </tr>
+                <tr id="iw-address-row" class="iw_table_row">
+                  <td class="iw_attribute_name">Address:</td>
+                  <td id="iw-address"></td>
+                </tr>
+                <tr id="iw-phone-row" class="iw_table_row">
+                  <td class="iw_attribute_name">Telephone:</td>
+                  <td id="iw-phone"></td>
+                </tr>
+                <tr id="iw-rating-row" class="iw_table_row">
+                  <td class="iw_attribute_name">Rating:</td>
+                  <td id="iw-rating"></td>
+                </tr>
+                <tr id="iw-website-row" class="iw_table_row">
+                  <td class="iw_attribute_name">Website:</td>
+                  <td id="iw-website"></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+        <!-- </div> -->
+        <!-- map-container end -->
+      </div>
+
+      <div class="six wide column">
+        hi
       <!-- Card Personal-->
         {{#each posts}}
-         <div class="panel-group" id="accordion">
+         <div id="accordion" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
-              <div class="panel-heading">
+              <div class="panel-heading" role="tab" id="heading{{_id}}">
                 <h4 class="panel-title">
 
-                  <div class="row">
-                    <div class="col-xs-10">
-                      <a data-toggle="collapse" data-parent="#accordion" href=#{{_id}}>{{firstName}} {{lastName}}</a>
-                    </div>
-                    <div class="col-xs-2">
+                  <!-- <div class="row"> -->
+                    <!-- <div class="col-xs-10"> -->
+                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#{{_id}}" aria-expanded="true" aria-controls="{{_id}}">{{firstName}} {{lastName}}</a>
+                    <!-- </div> -->
+                    <!-- <div class="col-xs-2"> -->
                       <button class="btn btn-primary btn-s btn-right"><span class="glyphicon glyphicon-ok"></span></button>
-                    </div>
-                  </div>
+                    <!-- </div> -->
+                  <!-- </div> -->
 
                 </h4>
               </div>
               <div class="row">
                 <div id={{_id}} class="panel-collapse collapse in">
                   <div class="col-xs-7">
-                    
+
                           {{> postItem}}
 
                         <div id="listing">
@@ -88,8 +134,11 @@
           </div>
           {{/each}}
         <!-- Card Personal-->
+      </div>
+      <!-- end post -->
+    </div>
   </div>
-  </div>
+  {{/unless}}
 
   <br>
 {{else}}

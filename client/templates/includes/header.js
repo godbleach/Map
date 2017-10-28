@@ -1,3 +1,10 @@
+
+Template.header.helpers({
+	isCurrentPage: function(pageName){
+        return Router.current().route.getName() === pageName ? 'active' : ''
+    }
+});
+
 Template.header.events({
 	"click .logout": function(event){
 		Meteor.logout(function(err){
@@ -9,4 +16,5 @@ Template.header.events({
 			}
 		});
 	},
+
 });

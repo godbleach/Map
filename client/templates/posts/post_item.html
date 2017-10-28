@@ -1,27 +1,25 @@
 <template name="postItem">
 
+  <div class="content active">
+    <div class="ui items">
+      <div class="item">
+        <div class="image">
+          <img src="/images/wireframe/image.png">
+        </div>
 
-  <div class="post">
-    <div class="post-content">
-      <h3><a href={{pathFor 'postPage'}}>{{firstName}} {{lastName}}</a></h3>
-      <!-- <h1>Name : {{firstName}} {{lastName}}</h4> -->
-      <p>
-        Name : {{firstName}} {{lastName}} <br>
-        BloodType : {{bloodType}} <br>
-        Faculty : {{faculty}} <br>
-        Major : {{major}} <br>
-        Emergency Cell : {{emerCell}} <br>
-
-      	<!-- submitted by {{author}} -->
-      	<!-- {{#if ownPost}}<a href="{{pathFor 'postEdit'}}">Edit</a>{{/if}} -->
-      </p>
-
-      {{#each image in imageFile.each}}
-        <img src="{{image.link}}" alt="{{image.name}}" />
-        <br>
-      {{/each}}
-      
+        <div class="content">
+          <a class="header">Header</a>
+          <div class="ui list">
+            <div class="item"> Name : {{firstName}} {{lastName}} </div>
+            <div class="item"> Blood Type : {{bloodType}} </div>
+            <div class="item"> Faculty : {{faculty}} </div>
+            <div class="item"> Major : {{major}} </div>
+            <div class="item"> Emergency Cell : {{emerCell}}</div>
+          </div>
+        </div>
+        <!-- end content-->
+      </div>
     </div>
-    <!-- <a href="{{pathFor 'postPage'}}" class="discuss btn btn-default">Discuss</a> -->
   </div>
+
 </template>

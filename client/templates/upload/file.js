@@ -8,7 +8,7 @@ Template.file.helpers({
   },
   audioFile() {
     return Sounds.find({}, {sort: {submitted: -1}});
-  }
+  },
   videoFile() {
     return Videos.find({}, {sort: {submitted: -1}});
   }

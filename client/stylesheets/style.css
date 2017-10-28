@@ -158,3 +158,9 @@ body {
   margin-bottom: 5px;
   pointer-events: auto;
 }
+
+.ui.container {
+    width: 1500px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}

@@ -2,10 +2,17 @@ Meteor.startup(function() {
   GoogleMaps.load({ v: '3', key: 'AIzaSyDzgiOABUWqCUWLMX6bXkRnPn-K6jqfua0', libraries: 'geometry,places' });
 });
 
+Template.mapPage.rendered = function(){
+    this.$('.ui.accordion').accordion();
+  }
+
 Template.mapPage.helpers({
-  // sounds: function() {
-  //   return Sounds.find({});
-  // },
+
+  haveMark: function(){
+    console.log(Markers.find().count() === 0);
+    return Markers.find().count() === 0;
+  },
+
   posts: function() {
     // var allMark = Markers.distinct("userId");
     var allMark = _.uniq(Markers.find({}, {
@@ -16,6 +23,7 @@ Template.mapPage.helpers({
     // console.log(allMark);
     return Posts.find({userId: {$in:allMark} });
   },
+
   mapOptions: function() {
     if (GoogleMaps.loaded()) {
       return {
@@ -29,8 +37,6 @@ Template.mapPage.helpers({
     }
   }
 });
-
-// Meteor.subscribe('markers');
 
 Meteor.subscribe('markers');
 
@@ -260,6 +266,14 @@ Template.mapPage.onCreated(function() {
 });
 
 Template.mapPage.events({
+  'click .btn': function(e){
+    e.preventDefault();
+     var markId = Markers.findOne({userId: this.userId});
+    // console.log(markId);
+    Markers.remove(markId._id);
+
+  },
+
   'click .btn': function(e){
     e.preventDefault();
      var markId = Markers.findOne({userId: this.userId});
