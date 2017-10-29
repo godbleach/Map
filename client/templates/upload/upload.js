@@ -18,7 +18,7 @@ function isFile(filename) {
 
   case 'mp3':
   case '3gp':
-  case 'caf'
+  case 'caf':
 
   case 'mp4':
       //etc
