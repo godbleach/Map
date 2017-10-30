@@ -9,12 +9,13 @@
 
       <div class="ui items">
         <div class="item">
+
           <div class="image">
-            <img src="/images/wireframe/image.png">
+            <img src="https://scontent.fbkk5-5.fna.fbcdn.net/v/t34.0-0/s261x260/21175095_1456198087783109_862137171_n.jpg?oh=f1a9bd356141a6fad0b778391865d0d8&oe=59F865A8">
           </div>
 
           <div class="content">
-            <a class="header" href="/posts/{{_id}}">Header</a>
+            <a class="header" href="#" id="setCenter">Header</a>
             <div class="ui list">
               <div class="item"> Name : {{firstName}} {{lastName}} </div>
               <div class="item"> Blood Type : {{bloodType}} </div>
@@ -22,21 +23,40 @@
               <div class="item"> Major : {{major}} </div>
               <div class="item"> Emergency Cell : {{emerCell}}</div>
             </div>
+
+            <!-- <div class="ui checkbox left floated">
+              <input type="checkbox" name="example">
+              <label>Received</label>
+            </div> -->
+
+            <button class="ui right floated basic button" id="remove">
+              <i class="remove icon"></i>
+              Finish
+            </button>
+
+            <button class="ui right floated basic button" id="info">
+              <i class="remove icon"></i>
+              Info
+            </button>
+
+            <button class="ui right floated basic button" >
+              <i class="remove icon"></i>
+              Recive
+            </button>
+
           </div>
           <!-- end content-->
         </div>
+
       </div>
       <!-- end item -->
 
-      <div class="ui checkbox">
-        <input type="checkbox" name="example">
-        <label>Make my profile visible</label>
-      </div>
-
-      <button class="ui right floated labeled icon button">
-        <i class="remove icon"></i>
-        Pause
-      </button>
+      <div id="listing">
+       <table id="resultsTable">
+         <tbody id="{{nearby}}">
+         </tbody>
+       </table>
+     </div>
 
     </div>
   </div>
