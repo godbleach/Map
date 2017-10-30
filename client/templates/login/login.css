@@ -1,17 +1,10 @@
 .form-signin {
-	width: 100%;
-    max-width: 500px;
-    padding: 100px;
-    margin: auto;
+	/* width: 100%;
+  max-width: 1000px; */
+  padding: 100px;
+  margin: auto;
 }
 
-/* .background{
-	background: url('https://image.freepik.com/free-vector/bright-background-with-dots_1055-3132.jpg') no-repeat fixed center center;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-} */
 
 .form-control {
 	height: 50px;
@@ -27,3 +20,11 @@
 	padding: 0px 30px 0px 30px;
 	}
 }
+
+
+.image {
+	margin-top: -100px;
+  }
+.column {
+	max-width: 450px;
+  }

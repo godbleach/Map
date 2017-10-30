@@ -12,10 +12,15 @@
       {{#if currentUser}}
         <a class="item {{isCurrentPage 'postSubmit'}}" href="{{pathFor 'postSubmit'}}">Submit Post</a>
       {{/if}}
-
+ 
       {{#if currentUser}}
         <a class="item logout" href="#">logout</a>
       {{/if}}
+
+  
+        <a  class="item" href="#">{{admin}}</a>
+      
+       
 
     </div>
   </div>
