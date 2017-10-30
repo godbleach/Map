@@ -2,7 +2,13 @@
 Template.header.helpers({
 	isCurrentPage: function(pageName){
         return Router.current().route.getName() === pageName ? 'active' : ''
-    }
+	},
+
+	admin: function() {
+		var name = Meteor.user().username;
+		return name;
+	}
+	
 });
 
 Template.header.events({
@@ -18,3 +24,4 @@ Template.header.events({
 	},
 
 });
+

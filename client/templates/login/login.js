@@ -7,7 +7,7 @@
 
 
 Template.login.events({
-	"submit .form-signin": function(event){
+	"submit .ui form": function(event){
 		var email = trimInput(event.target.email.value);
 		var password = trimInput(event.target.password.value);
 
