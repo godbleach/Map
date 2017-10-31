@@ -39,6 +39,7 @@ Template.postItem.events({
      Session.set('lng',markId.lng);
     // console.log(markId);
     Markers.remove(markId._id);
+    
   },
 
   'click .button#info': function(e){
