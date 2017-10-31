@@ -1,0 +1,10 @@
+#line{
+    border: solid;
+    border-width: 5px;
+    background: white;
+    border-color: black; 
+}
+
+#history-form{
+    padding: 100px;
+}
