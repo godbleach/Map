@@ -1,17 +1,18 @@
 <template name="postsList">
-  <div class="posts page">
+  <div class="ui grid" id="history-form">
+
+    <div class="four wide column" id="line">Student ID</div>
+    <div class="eight wide column" id="line">Student Name</div>
+    <div class="four wide column" id="line">Faculty</div>
+
     {{#each posts}}
-      {{> postItem}}
-    {{/each}}
-    <br>
-    <h1>Start PostUser</h1>
-
-    {{#each usersInfo}}
-      {{> postUser}}
+      {{> postuser}}
     {{/each}}
 
-    <br>
-    <h1>End PostUser</h1>
   </div>
+    
+
+
+ 
 </template>
 <!-- โพสของเพิ่มที่หน้านี้ -->
