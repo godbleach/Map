@@ -35,6 +35,8 @@ Template.postItem.events({
   'click .button#remove': function(e){
     e.preventDefault();
      var markId = Markers.findOne({userId: this.userId});
+     var user = Posts.findOne({userId: this.userId});
+     var user_id = user.username;
      Session.set('lat',markId.lat);
      Session.set('lng',markId.lng);
     // console.log(markId);
