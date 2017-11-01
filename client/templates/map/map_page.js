@@ -19,7 +19,7 @@ Template.mapPage.helpers({
 
 Meteor.subscribe('markers');
 
-Template.mapPage.onCreated(function() {
+Template.mapPage.onCreated(function() {0
 
   // We can use the `ready` callback to interact with the map API once the map is ready.
 	GoogleMaps.ready('mapEx', function(map) {
