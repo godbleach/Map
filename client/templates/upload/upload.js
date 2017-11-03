@@ -134,11 +134,18 @@ Template.upload.events({
           }
           template.currentUpload.set(false);
           console.log(fileObj);
-          let url = Router.current().url;
-          let path = url.split( '/' );
-          // console.log(path[4]);
-          var newUserId = {_id:fileObj._id, userId:path[4] }
-          Meteor.call('fileUpdate',newUserId);
+          if(Session.get('iosId')){
+            Meteor.call('fileUpdate',Session.get('iosId'));
+            Session.set('iosId',0);
+          }
+          else{
+            let url = Router.current().url;
+            let path = url.split( '/' );
+            // console.log(path[4]);
+            var newUserId = {_id:fileObj._id, userId:path[4] }
+            Meteor.call('fileUpdate',newUserId);
+          }
+
         });
 
         uploadInstance.start();

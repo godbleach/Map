@@ -26,7 +26,7 @@ Template.mapPage.onCreated(function() {
 
        google.maps.event.addListener(map.instance, 'click', function(event) {
         var point = {userId: Meteor.userId(),lat: event.latLng.lat(), lng: event.latLng.lng()};
-        Meteor.call('markInsert',point);
+        Meteor.call('markInserty',point);
       });
 
        console.log(document.getElementById('info-content'));
@@ -139,6 +139,52 @@ Template.mapPage.onCreated(function() {
           }
         });
 
+        Nearbys.find().observe({
+          added: function(document){
+            // console.log(document.mark);
+            if(document.mark){
+              // console.log("nearby2");
+              let latlngNearby = new google.maps.LatLng(document.lat, document.lng);
+              service.nearbySearch({
+                  location: latlngNearby,
+                  radius: 1000,
+                  type: ['hospital'],
+                }, function(results, status){
+                  if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    for (let i = 0; i < results.length; i++) {
+                      let nearbyInfo = {
+                        userId : document.userId,
+                        lat : results[i].geometry.location.lat,
+                        lng : results[i].geometry.location.lng,
+                        name : results[i].name,
+                        icon : results[i].icon,
+                        vicinity : results[i].vicinity,
+                        formatted_address : results[i].formatted_address,
+                        formatted_phone_number : results[i].formatted_phone_number,
+                        rating : results[i].rating,
+                        website : results[i].website,
+                      };
+                      // users.update({_id : "Jack"},{$set:{age : 13, username : "Jack"}});
+                      Meteor.call('insertNearbyMark', nearbyInfo);
+                      // Nearbys.update({_id : document._id},{$set:{
+                      //   name : results[i].name,
+                      //   icon : results[i].icon,
+                      //   vicinity : results[i].vicinity,
+                      //   formatted_address : results[i].formatted_address,
+                      //   formatted_phone_number : results[i].formatted_phone_number,
+                      //   rating : results[i].rating,
+                      //   website : results[i].website,
+                      // }});
+                    }
+                  }
+                }
+              );
+            }
+
+
+          },
+        });
+
         function nearby(xy){
           console.log("hi");
           clearMarkers();
@@ -191,32 +237,43 @@ Template.mapPage.onCreated(function() {
         }
 
         function addResult(result, i,m) {
-        //  var results = $('#results');Session.get('lng')
-        console.log(Session.get('nearby'));
-        var results = document.getElementById(Session.get('nearby'));
-        //  var results = document.getElementById('results');
-         var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
-         var markerIcon = MARKER_PATH + markerLetter + '.png';
+          //  var results = $('#results');Session.get('lng')
+          console.log(Session.get('nearby'));
+          // var results = document.getElementById(Session.get('nearby'));
+          // //  var results = document.getElementById('results');
+          //  var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
+          //  var markerIcon = MARKER_PATH + markerLetter + '.png';
+          //
+          //  var tr = document.createElement('tr');
+          //  tr.style.backgroundColor = (i % 2 === 0 ? '#F0F0F0' : '#FFFFFF');
+          //  tr.onclick = function() {
+          //    google.maps.event.trigger(m, 'click');
+          //  };
+          //
+          //  var iconTd = document.createElement('td');
+          //  var nameTd = document.createElement('td');
+          //  var icon = document.createElement('img');
+          //  icon.src = markerIcon;
+          //  icon.setAttribute('class', 'placeIcon');
+          //  icon.setAttribute('className', 'placeIcon');
+          //  var name = document.createTextNode(result.name);
+          //  iconTd.appendChild(icon);
+          //  nameTd.appendChild(name);
+          //  tr.appendChild(iconTd);
+          //  tr.appendChild(nameTd);
+          //  results.appendChild(tr);
 
-         var tr = document.createElement('tr');
-         tr.style.backgroundColor = (i % 2 === 0 ? '#F0F0F0' : '#FFFFFF');
-         tr.onclick = function() {
-           google.maps.event.trigger(m, 'click');
-         };
-
-         var iconTd = document.createElement('td');
-         var nameTd = document.createElement('td');
-         var icon = document.createElement('img');
-         icon.src = markerIcon;
-         icon.setAttribute('class', 'placeIcon');
-         icon.setAttribute('className', 'placeIcon');
-         var name = document.createTextNode(result.name);
-         iconTd.appendChild(icon);
-         nameTd.appendChild(name);
-         tr.appendChild(iconTd);
-         tr.appendChild(nameTd);
-         results.appendChild(tr);
-        }
+          var results = document.getElementById(Session.get('nearby'));
+          var div = document.createElement('div');
+           div.onclick = function() {
+             google.maps.event.trigger(m, 'click');
+           };
+          div.setAttribute('class', 'item');
+          div.setAttribute('data-value', i);
+          var name = document.createTextNode(result.name);
+          div.appendChild(name);
+          results.appendChild(div);
+          }
 
        function clearResults() {
          var results = document.getElementById(Session.get('nearby'));
