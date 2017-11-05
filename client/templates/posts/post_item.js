@@ -56,6 +56,8 @@ Template.postItem.events({
   'click .button#remove': function(e){
     e.preventDefault();
      var markId = Markers.findOne({userId: this.userId});
+     var user = Posts.findOne({userId: this.userId});
+     var user_id = user.username;
      Session.set('lat',markId.lat);
      Session.set('lng',markId.lng);
     // console.log(markId);
@@ -68,15 +70,27 @@ Template.postItem.events({
   },
 
   'click .header#setCenter': function(e){
-    var markId = Markers.findOne({userId: this.userId});
+    let markId = Markers.findOne({userId: this.userId});
     Session.set('nearby',this._id);
     Session.set('lat',markId.lat);
     Session.set('lng',markId.lng);
   },
 
+  // 'click #dropNearby': function(e){
+  //   console.log('find Hospital');
+  //   if(Session.get('nearOn'+this._id)){
+  //     return;
+  //   }
+  //   let markId = Markers.findOne({userId: this.userId});
+  //   Session.set('nearby',this._id);
+  //   Session.set('nearLatLng', {lat:markId.lat, lng:markId.lng});
+  //   // console.log(  Session.get('check'+ this._id) );
+  //   Session.set('nearOn'+this._id,true);
+  // },
+
   'click #check': function(e){
     Session.set('check'+ this._id, true);
     console.log( 'check'+ this._id);
-    console.log(  Session.get('check'+ this._id) );
+    // console.log(  Session.get('check'+ this._id) );
   },
 })

@@ -19,14 +19,14 @@ Template.mapPage.helpers({
 
 Meteor.subscribe('markers');
 
-Template.mapPage.onCreated(function() {
+Template.mapPage.onCreated(function() {0
 
   // We can use the `ready` callback to interact with the map API once the map is ready.
 	GoogleMaps.ready('mapEx', function(map) {
 
        google.maps.event.addListener(map.instance, 'click', function(event) {
         var point = {userId: Meteor.userId(),lat: event.latLng.lat(), lng: event.latLng.lng()};
-        Meteor.call('markInserty',point);
+        Meteor.call('markInsert',point);
       });
 
        console.log(document.getElementById('info-content'));
@@ -59,6 +59,14 @@ Template.mapPage.onCreated(function() {
             Session.set('lat',0);
             Session.set('lng',0);
           }
+
+          // if(Session.get('nearLatLng')) {
+          //   let xy = Session.get('nearLatLng');
+          //   nearby(xy)
+          //   // GoogleMaps.maps.mapEx.instance.setCenter({ lat: xy.lat, lng: xy.lng });
+          //
+          //   Session.set('nearLatLng',false);
+          // }
          });
 
         Markers.find().observe({

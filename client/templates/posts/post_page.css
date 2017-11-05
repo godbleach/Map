@@ -1,0 +1,15 @@
+#carousel {
+  border:   1px ;
+  width:    800px;
+  position: relative;
+  /*top:      100px;*/
+  left:     30px;
+}
+#carousel div {
+width:    800px;
+}
+
+
+.slick-prev:before, .slick-next:before {
+color:    silver;
+}

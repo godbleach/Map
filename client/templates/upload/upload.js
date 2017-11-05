@@ -76,7 +76,7 @@ Template.upload.helpers({
 
 
 Template.upload.rendered = function(){
-    this.$('.ui.fullscreen.modal').modal('show');
+    this.$('.ui.fullscreen.modal').modal({closable: false}).modal("show");
 }
 
 

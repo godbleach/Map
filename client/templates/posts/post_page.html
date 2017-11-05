@@ -1,11 +1,13 @@
 <template name="postPage">
-  <div class="post-page page">
+
     <div class="ui segment">
       <div class="ui grid">
+        <div class="sixteen wide column"></div>
         <div class="four wide column">
-          <div class="ui card">
+
+          <div class="ui card" style="margin-top: 2cm;">
             <div class="image">
-              <img src="https://scontent.fbkk5-5.fna.fbcdn.net/v/t34.0-0/s261x260/21175095_1456198087783109_862137171_n.jpg?oh=f1a9bd356141a6fad0b778391865d0d8&oe=59F865A8">
+              <img src="https://reg.src.ku.ac.th/picnisit/5830300729.jpg">
             </div>
             <div class="content">
               <a class="header">{{firstName}} {{lastName}}</a>
@@ -27,31 +29,64 @@
 
         <div class="twelve wide column">
 
-          <!-- show sound -->
+
+          <div class="ui three doubling cards" >
           {{#each sound in audioFile.each}}
-            <audio height="auto" controls preload="auto" autoplay>
-              <source src="{{sound.link}}" type="{{sound.type}}" />
-            </audio>
-              <hr>
+            <div class="ui link card">
+                <audio class="center float" height="auto" controls preload="auto" autoplay>
+                  <source src="{{sound.link}}" type="{{sound.type}}" />
+                </audio>
+            </div>
+
           {{/each}}
+        </div>
+        <br>
+        <hr>
 
           <!-- show image -->
-          {{#each image in imageFile.each}}
-            <img src="{{image.link}}" alt="{{image.name}}" />
-            <hr>
-          {{/each}}
+        
+          <div class="ui three doubling cards" >
+
+            {{#each image in imageFile.each}}
+            <div class="ui link card" id="showImage">
+              <div class="ui image" style="margin-top: 0cm;">
+                  <img src="{{image.link}}" />
+              </div>
+            </div>
+            {{/each}}
+
+          </div>
+
+        <div class="ui modal">
+          <div class="image content" >
+            <div id="carousel">
+              {{#each image in imageFile.each}}
+                <div ><img style="margin-top: 0.25cm;" class="ui rounded image" src="{{image.link}}" alt="{{image.name}}" /></div>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+        <br>
+        <hr>
+        <!-- end Image -->
 
           <!-- show video -->
-          {{#each video in videoFile.each}}
-          <video width="320" height="240" controls>
-            <source src="{{video.link}}" type="video/mp4">
-          </video>
-          {{/each}}
+
+          <div class="ui three doubling cards" >
+            {{#each video in videoFile.each}}
+              <div class="ui link card">
+                  <video class="center float" width="346.49" height="216.55" controls >
+                    <source src="{{video.link}}" type="video/mp4">
+                  </video>
+              </div>
+
+            {{/each}}
+
+          </div>
+
         </div>
 
       </div>
     </div>
 
-  </div>
 </template>
-<!-- แสดงผลของโพสที่ login แล้วโพสเพิ่ม -->

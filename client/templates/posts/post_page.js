@@ -1,6 +1,14 @@
 import { Files } from '/lib/collections/files.js';
 import './post_page.html';
 
+Template.postPage.rendered = function() {
+    this.$('#carousel').slick({
+      dots: true,
+      arrows: true
+    });
+    this.$('.ui.modal').modal({ detachable: false });
+
+  }
 
 Template.postPage.helpers({
   audioFile: function() {
@@ -18,3 +26,15 @@ Template.postPage.helpers({
   },
 
 });
+
+Template.postPage.events({
+    // 'click .openModal': function (e,template) {
+    //   console.log('modal');
+    //   template.$('.ui.modal').modal('show');
+    // },
+
+    'click .link.card#showImage': function (e,template) {
+      console.log('modal');
+      template.$('.ui.modal').modal('show');
+    },
+  });
