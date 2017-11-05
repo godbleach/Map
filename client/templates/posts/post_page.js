@@ -35,6 +35,6 @@ Template.postPage.events({
 
     'click .link.card#showImage': function (e,template) {
       console.log('modal');
-      template.$('.ui.modal').modal('show');
+      template.$('.ui.modal').modal("refresh").modal('show');
     },
   });

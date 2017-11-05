@@ -3,32 +3,33 @@
   <input type="file" id="fileInput" style="display:none">
   <div class="ui fullscreen modal">
     <div class="ui huge header">
-      <p style="font-size:36px;">Upload</p>
+      <p style="font-size:72px;">Upload</p>
     </div>
-    <div class="content">
-      <div class="ui center aligned segment">
+    <div class="content" style="background:#5DADE2">
+      <div class="ui center aligned segment" style="background:#D4E6F1">
         <br>
         {{#with currentUpload}}
 
-          <label class="circular ui icon button" data-value="{{progress.get}}" data-total="100" id="ex">
+          <label class="circular ui icon button">
             <i class="massive icons">
               <i class="huge loading circle notched icon"></i>
               <i class="big cloud upload icon"></i>
             </i>
             </label>
           <br><br>
-          <p style="font-size:72px;">{{file.name}}</p>
+          <p style="font-size:36px;">{{file.name}}</p>
+          <p style="font-size:36px;">Uploading Files : {{progress.get}}%</p>
 
-          <div class="ui indicating progress" data-value="{{progress.get}}" data-total="100" id="ex">
+          <!-- <div class="ui indicating progress" data-value="{{progress.get}}" data-total="100" id="ex">
             <div class="bar">
               <div class="progress"></div>
             </div>
             <div class="label">Uploading Files {{progress.get}}%</div>
-          </div>
+          </div> -->
 
         {{else}}
 
-          <label for="fileInput" class="circular ui icon button">
+          <label for="fileInput" class="circular ui icon button" style="color:#5DADE2; background:#1A5276;">
             <i class="massive icons">
               <i class="huge circle notched icon"></i>
               <i class="big cloud upload icon"></i>
