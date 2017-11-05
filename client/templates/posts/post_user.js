@@ -7,3 +7,9 @@ Template.postuser.helpers({
     //     return Posts.find({}, {sort: {submitted: -1}});
     //   }
 });
+
+Template.postuser.events({
+    "click .button#check":function(e){
+        Router.go("/historys/"+this._id);
+      },
+});
