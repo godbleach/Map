@@ -9,9 +9,11 @@
         Map
       </a>
 
+
       {{#if currentUser}}
         <a class="item {{isCurrentPage 'postSubmit'}}" href="{{pathFor 'postSubmit'}}">Submit Post</a>
       {{/if}}
+      <a class="item {{isCurrentPage 'postsList'}}" href="{{pathFor 'postsList'}}">History</a>
  
       {{#if currentUser}}
         <a class="item logout" href="#">logout</a>
