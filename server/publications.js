@@ -14,3 +14,8 @@ Meteor.publish('Images', function() {
 Meteor.publish('Nearbys', function() {
   return Nearbys.find();
 });
+
+Meteor.publish('historys', function() {
+  return Historys.find();
+});
+

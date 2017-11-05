@@ -89,8 +89,26 @@ Template.postItem.events({
   // },
 
   'click #check': function(e){
-    Session.set('check'+ this._id, true);
-    console.log( 'check'+ this._id);
-    // console.log(  Session.get('check'+ this._id) );
+    // console.log( 'check'+ this._id);
+    // console.log( 'check'+ Meteor.user().username);
+    var markId = Markers.findOne({userId: this.userId});
+    var year = new Date().getFullYear();
+    var month = new Date().getMonth() + 1;
+    var day = new Date().getDate();
+    var date = (month + "/" + day + "/" + year).toString();
+    var d = new Date();
+    var time = d.toLocaleTimeString();
+
+    let info = {
+      userId : this.userId,
+      address : markId.address,
+      admin : Meteor.user().username,
+      date : date,
+      time : time
+    };
+    
+    Meteor.call('logInsert',info);
   },
+
+
 })

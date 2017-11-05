@@ -26,7 +26,7 @@ Template.mapPage.onCreated(function() {0
 
        google.maps.event.addListener(map.instance, 'click', function(event) {
         var point = {userId: Meteor.userId(),lat: event.latLng.lat(), lng: event.latLng.lng()};
-        Meteor.call('insertNearby',point);
+        Meteor.call('markInsert',point);
       });
 
        console.log(document.getElementById('info-content'));
@@ -77,6 +77,7 @@ Template.mapPage.onCreated(function() {0
             geocoder.geocode({'location': latlng}, function(results, status) {
               if (status === 'OK') {
                 if (results[0]) {
+                  Markers.update({_id : document._id},{$set:{address : results[0].formatted_address}});
                   map.instance.setZoom(15);
                   var marker = new google.maps.Marker({
                     // draggable: true,

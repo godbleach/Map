@@ -1,20 +1,23 @@
 <template name="historyUser">
-    <div class="ui grid" id="history-form">
+    <div>
+        <div class="ui grid" id="history-form">
 
-        <div class="three wide column" id="line">Action date</div>
-        <div class="four wide column" id="line">Time</div>
-        <div class="six wide column" id="line">Location</div>
-        <div class="three wide column" id="line">Admin</div>
-        
+            <div class="three wide column" id="line">Action date</div>
+            <div class="four wide column" id="line">Time</div>
+            <div class="six wide column" id="line">Location</div>
+            <div class="three wide column" id="line">Admin</div>
+            
+            {{#each history}}
+                <!-- {{> user}} -->
+                <div class="three wide column" id="line">{{date}}</div>
+                
+                <div class="four wide column" id="line">{{time}}</div>
+                
+                <div class="six wide column" id="line">{{address}}</div>
+                
+                <div class="three wide column" id="line">{{admin}}</div>
+            {{/each}}
 
-        <div class="three wide column" id="line"></div>
-        
-        <div class="four wide column" id="line"></div>
-        
-        <div class="six wide column" id="line"></div>
-        
-        <div class="three wide column" id="line"></div>
-
+        </div>
     </div>
-
 </template>
