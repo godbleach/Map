@@ -7,3 +7,7 @@ Template.postuser.helpers({
     //     return Posts.find({}, {sort: {submitted: -1}});
     //   }
 });
+
+Template.postuser.events({
+
+});
