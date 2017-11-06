@@ -66,6 +66,8 @@ Template.postItem.events({
   },
 
   'click .button#info': function(e){
+    Transitions.transitionOut = 'fadeOut'
+    Transitions.transitionIn = 'fadeIn'
     Router.go("/posts/"+this._id);
   },
 

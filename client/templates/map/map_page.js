@@ -2,6 +2,11 @@ Meteor.startup(function() {
   GoogleMaps.load({ v: '3', key: 'AIzaSyDzgiOABUWqCUWLMX6bXkRnPn-K6jqfua0', libraries: 'geometry,places' });
 });
 
+
+// Template.mapPage.rendered({
+//   this.$('#start').transition('fade up');
+// });
+
 Template.mapPage.helpers({
   mapOptions: function() {
     if (GoogleMaps.loaded()) {
@@ -162,8 +167,8 @@ Template.mapPage.onCreated(function() {0
                     for (let i = 0; i < results.length; i++) {
                       let nearbyInfo = {
                         userId : document.userId,
-                        lat : results[i].geometry.location.lat,
-                        lng : results[i].geometry.location.lng,
+                        lat : results[i].geometry.location.lat(),
+                        lng : results[i].geometry.location.lng(),
                         name : results[i].name,
                         icon : results[i].icon,
                         vicinity : results[i].vicinity,

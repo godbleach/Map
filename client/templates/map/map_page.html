@@ -27,8 +27,14 @@
     </div>
   </div>
 
-    {{> googleMap name="mapEx" options=mapOptions}}
 
+  {{#transition in="bounceIn" out="bounceOut"}}
+    {{> googleMap name="mapEx" options=mapOptions}}
+  {{/transition}}
+
+    {{#animate type="pulse" delay="100"}}
+
+    {{/animate}}
     <!-- {{> nearby}} -->
 
 

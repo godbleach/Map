@@ -1,35 +1,39 @@
 <template name="mapMain">
-{{#if currentUser}}
+   <div class="transitions-content" style="overflow :hidden;">
+     {{#if currentUser}}
 
-  {{#unless haveMark}}
-    <div class="ui grid">
-    <div class="sixteen wide column"></div>
-    <div class="ten wide column">
-      <div class="map-container">
-          {{>mapPage}}
-      </div>
-      <!-- map-container end -->
-    </div>
-    <div class="six wide column">
-      {{#each posts}}
-        <!-- <div class="ui styled accordion"> -->
-          {{>postItem}}
-          <!-- </div> -->
-      {{/each}}
+       {{#unless haveMark}}
+         <div class="ui grid">
+         <div class="sixteen wide column"></div>
+         <div class="ten wide column">
+           <div class="map-container">
+             {{>mapPage}}
 
-    </div>
-  </div>
+           </div>
+           <!-- map-container end -->
+         </div>
+         <div class="six wide column">
+           <div class="ui segment" style="height:500px; overflow-y:auto; white-space:nowrap;">
+           {{#each posts}}
+             <!-- <div class="ui styled accordion"> -->
+               {{>postItem}}
+               <!-- </div> -->
+           {{/each}}
+         </div>
+         </div>
+       </div>
 
-  {{else}}
-    <div class="map-container">
-      {{>mapPage}}
-    </div>
+       {{else}}
+         <div class="map-container">
+           {{>mapPage}}
+         </div>
 
-  {{/unless}}
+       {{/unless}}
 
 
-  <br>
-{{else}}
-<center><h1>Please  <a href="/">login</a> </h1></center>
-{{/if}}
+       <br>
+     {{else}}
+     <center><h1>Please  <a href="/">login</a> </h1></center>
+     {{/if}}
+   </div>
 </template>
