@@ -14,18 +14,9 @@ Template.postItem.rendered = function(){
 }
 
 Template.postItem.helpers({
-  // check: function(){
-  //   if(Session.get('check'+ this._id)){
-  //     console.log('uncheck');
-  //     this.$('.ui.checkbox')
-  //       .last()
-  //       .checkbox({
-  //         uncheckable: false
-  //       });
-  //     Session.set('check'+ this._id,false);
-  //   }
-  //   return ;
-  // },
+  isCurrentPage: function(pageName){
+        return Router.current().route.getName() === pageName ? 'active' : ''
+  },
 
   nearby: function(){
     console.log(this._id);
@@ -66,8 +57,6 @@ Template.postItem.events({
   },
 
   'click .button#info': function(e){
-    Transitions.transitionOut = 'fadeOut'
-    Transitions.transitionIn = 'fadeIn'
     Router.go("/posts/"+this._id);
   },
 
@@ -108,7 +97,7 @@ Template.postItem.events({
       date : date,
       time : time
     };
-    
+
     Meteor.call('logInsert',info);
   },
 
