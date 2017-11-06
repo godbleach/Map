@@ -1,11 +1,7 @@
 import { Sounds, Images } from '/lib/collections/files.js';
 import './post_item.html';
 
-$('.checkbox')
-  .last()
-  .checkbox({
-    uncheckable: false
-  });
+var handle = Meteor.subscribe('historys');
 
 Template.postItem.rendered = function(){
     this.$('.ui.accordion').accordion();
@@ -27,10 +23,10 @@ Template.postItem.helpers({
     this.$('.ui.accordion').accordion();
   },
 
-  imageFile: function() {
-    // console.log(this.userId);
-    return Images.find({"userId":this.userId});
-  },
+  // imageFile: function() {
+  //   // console.log(this.userId);
+  //   return Images.find({"userId":this.userId});
+  // },
 
   ownPost: function() {
   	return this.userId === Meteor.userId();
@@ -40,7 +36,15 @@ Template.postItem.helpers({
     var a = document.createElement('a');
     a.href = this.url;
     return a.hostname;
-  }
+  },
+
+  checked: function(){
+    // console.log(Historys.find().fetch());
+    if(Historys.findOne({userId: this.userId})){
+      console.log("hereeeeeeeeeeeeee");
+      return "checked";
+    }
+  },
 });
 
 Template.postItem.events({
