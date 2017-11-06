@@ -14,6 +14,14 @@ Template.postItem.rendered = function(){
 }
 
 Template.postItem.helpers({
+  checked: function(){
+    // console.log(Historys.find().fetch());
+    // if(Historys.findOne({userId: this.userId})){
+    //   return "checked";
+    // }
+    return true;
+  },
+
   isCurrentPage: function(pageName){
         return Router.current().route.getName() === pageName ? 'active' : ''
   },
@@ -25,11 +33,6 @@ Template.postItem.helpers({
 
   trackAccordion: function(){
     this.$('.ui.accordion').accordion();
-  },
-
-  imageFile: function() {
-    // console.log(this.userId);
-    return Images.find({"userId":this.userId});
   },
 
   ownPost: function() {

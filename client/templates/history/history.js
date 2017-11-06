@@ -1,7 +1,9 @@
 Template.historyUser.helpers({
     history: function() {
-      console.log(this._id)
-      // return Historys.find({userId: });
+      console.log( Historys.find().fetch())
+      let url = Router.current().url;
+      let path = url.split( '/' );
+      return Historys.find({userId:path[2] });
     }
-  
+
 });

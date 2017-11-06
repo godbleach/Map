@@ -7,7 +7,7 @@ Meteor.publish('markers', function() {
 });
 
 
-Meteor.publish('Images', function() {
+Meteor.publish('Files', function() {
   return Files.find();
 });
 
@@ -18,4 +18,3 @@ Meteor.publish('Nearbys', function() {
 Meteor.publish('historys', function() {
   return Historys.find();
 });
-

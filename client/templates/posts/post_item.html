@@ -30,9 +30,14 @@
             </div> -->
 
 
-            <div class="ui checkbox {{check}}" id="check">
-              <input type="checkbox" >
-              <label>Make my profile visible</label>
+            <div class="ui checkbox" id="check">
+              {{#if checked}}
+                <input type="checkbox" checked="">
+                <label>checked</label>
+              {{else}}
+                <input type="checkbox">
+                <label>uncheck</label>
+              {{/if}}
             </div>
 
 
