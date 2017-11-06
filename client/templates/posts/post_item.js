@@ -42,8 +42,9 @@ Template.postItem.helpers({
     // console.log(Historys.find().fetch());
     if(Historys.findOne({userId: this.userId})){
       console.log("hereeeeeeeeeeeeee");
-      return "checked";
+      return true;
     }
+    return false;
   },
 });
 
@@ -86,6 +87,9 @@ Template.postItem.events({
   'click #check': function(e){
     // console.log( 'check'+ this._id);
     // console.log( 'check'+ Meteor.user().username);
+    if(Historys.findOne({userId: this.userId})){
+      return;
+    }
     var markId = Markers.findOne({userId: this.userId});
     var year = new Date().getFullYear();
     var month = new Date().getMonth() + 1;
