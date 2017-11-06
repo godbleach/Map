@@ -1,5 +1,7 @@
 <template name="historyUser">
+
   <div class="transitions-content" style="overflow :hidden;">
+    
     <div class="ui grid" id="history-form">
 
         <div class="three wide column" id="line">Action date</div>
@@ -16,6 +18,29 @@
 
         <div class="three wide column" id="line"></div>
 
+    <div>
+        <div class="ui grid" id="history-form">
+
+            <div class="three wide column" id="line">Action date</div>
+            <div class="four wide column" id="line">Time</div>
+            <div class="six wide column" id="line">Location</div>
+            <div class="three wide column" id="line">Admin</div>
+
+            {{#each history}}
+                <!-- {{> user}} -->
+                <div class="three wide column" id="line">{{date}}</div>
+
+                <div class="four wide column" id="line">{{time}}</div>
+
+                <div class="six wide column" id="line">{{address}}</div>
+
+                <div class="three wide column" id="line">{{admin}}</div>
+            {{/each}}
+
+
+        </div>
     </div>
+
+</div>
 </div>
 </template>

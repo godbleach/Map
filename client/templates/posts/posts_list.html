@@ -1,17 +1,18 @@
 <template name="postsList">
-  <div class="ui grid" id="history-form">
+  <div class="ui raised segment">
+    <div class="ui grid" id="history-form">
 
-    <div class="three wide column" id="line">Student ID</div>
-    <div class="eight wide column" id="line">Student Name</div>
-    <div class="four wide column" id="line">Faculty</div>
-    <div class="one wide column"></div>
+      <div class="three wide column" id="line">Student ID</div>
+      <div class="eight wide column" id="line">Student Name</div>
+      <div class="four wide column" id="line">Faculty</div>
+      <div class="one wide column"></div>
 
-    {{#each posts}}
-      {{> postuser}}
-    {{/each}}
+      {{#each posts}}
+        {{> postuser}}
+      {{/each}}
 
-  </div>
-    
+    </div>
+  </div>  
 
 
  

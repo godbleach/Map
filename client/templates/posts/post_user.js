@@ -10,6 +10,8 @@ Template.postuser.helpers({
 
 Template.postuser.events({
     "click .button#check":function(e){
-        Router.go("/historys/"+this._id);
+      
+        Router.go("/historys/"+this.userId);
       },
+    
 });

@@ -10,7 +10,7 @@
 body {
   background: #585757;
   color: #070707;
-
+  overflow: hidden;
 }
 
 #main {
