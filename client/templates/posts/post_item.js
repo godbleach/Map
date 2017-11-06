@@ -1,11 +1,7 @@
 import { Sounds, Images } from '/lib/collections/files.js';
 import './post_item.html';
 
-$('.checkbox')
-  .last()
-  .checkbox({
-    uncheckable: false
-  });
+var handle = Meteor.subscribe('historys');
 
 Template.postItem.rendered = function(){
     this.$('.ui.accordion').accordion();
@@ -14,13 +10,6 @@ Template.postItem.rendered = function(){
 }
 
 Template.postItem.helpers({
-  checked: function(){
-    // console.log(Historys.find().fetch());
-    // if(Historys.findOne({userId: this.userId})){
-    //   return "checked";
-    // }
-    return true;
-  },
 
   isCurrentPage: function(pageName){
         return Router.current().route.getName() === pageName ? 'active' : ''
@@ -43,7 +32,16 @@ Template.postItem.helpers({
     var a = document.createElement('a');
     a.href = this.url;
     return a.hostname;
-  }
+  },
+
+  checked: function(){
+    // console.log(Historys.find().fetch());
+    if(Historys.findOne({userId: this.userId})){
+      console.log("hereeeeeeeeeeeeee");
+      return true;
+    }
+    return false;
+  },
 });
 
 Template.postItem.events({
@@ -85,6 +83,9 @@ Template.postItem.events({
   'click #check': function(e){
     // console.log( 'check'+ this._id);
     // console.log( 'check'+ Meteor.user().username);
+    if(Historys.findOne({userId: this.userId})){
+      return;
+    }
     var markId = Markers.findOne({userId: this.userId});
     var year = new Date().getFullYear();
     var month = new Date().getMonth() + 1;
