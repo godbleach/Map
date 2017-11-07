@@ -1,11 +1,18 @@
 import { Files } from '/lib/collections/files.js';
 import './post_page.html';
 
+// var swiper = new Swiper('.swiper-container', {
+//   navigation: {
+//     nextEl: '.swiper-button-next',
+//     prevEl: '.swiper-button-prev',
+//   },
+// });
+
 Template.postPage.rendered = function() {
-    // this.$('#carousel').slick({
-    //   dots: true,
-    //   arrows: true
-    // });
+    this.$('#carousel').slick({
+      dots: true,
+      arrows: true
+    });
     this.$('.ui.modal').modal({ detachable: false });
 
   }
@@ -35,12 +42,7 @@ Template.postPage.events({
 
     'click .link.card#showImage': function (e,template) {
       console.log('modal');
-      template.$('.ui.modal').modal({
-        blurring: true,
-        // detachable: true
-        })
-        .modal('show');
+      template.$('.ui.modal').modal('toggle');
 
-        template.$('.ui.modal').modal({ detachable: false });
     },
   });
