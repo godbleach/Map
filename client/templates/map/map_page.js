@@ -28,11 +28,24 @@ Template.mapPage.onCreated(function() {
 
        google.maps.event.addListener(map.instance, 'click', function(event) {
         var point = {userId: Meteor.userId(),lat: event.latLng.lat(), lng: event.latLng.lng()};
+        if(Markers.findOne({userId: Meteor.userId()})){
+          return;
+        }
         Meteor.call('markInsert',point);
-        // Meteor.call('insertNearby',point);
+        // console.log(Markers.findOne({userId: Meteor.userId()}));
+        Bert.alert({
+          title: 'Accident',
+          message: 'helppppp',
+          type: 'info',
+          style: 'fixed-top',
+          icon: 'fa-ambulance'
+        });
+        var s = new buzz.sound('/sounds/alert1.wav');
+        s.play();
+       
       });
 
-       console.log(document.getElementById('info-content'));
+      //  console.log(document.getElementById('info-content'));
 
         var markers = {};
         var markers2 = []; //ใส่ mark ของ nearby

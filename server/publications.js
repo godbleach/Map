@@ -11,7 +11,7 @@ Meteor.publish('Files', function() {
   return Files.find();
 });
 
-Meteor.publish('Nearbys', function() {
+Meteor.publish('nearbys', function() {
   return Nearbys.find();
 });
 
