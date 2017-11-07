@@ -32,10 +32,10 @@
             <div class="ui checkbox " id="check">
               {{#if checked}}
                 <input type="checkbox" checked="">
-                <label>checked</label>
+                <label>Received</label>
               {{else}}
                 <input type="checkbox">
-                <label>uncheck</label>
+                <label>Not Received</label>
               {{/if}}
             </div>
 
@@ -49,7 +49,7 @@
 
       <button class="ui mini blue right floated basic button" id="remove" >
         <i class="checkmark icon"></i>
-        Received
+        Delete
       </button>
 
       <button class="ui mini blue right floated basic button" id="info">
@@ -65,7 +65,7 @@
         Recive
       </button> -->
 
-      <div class="ui selection dropdown" id="dropNearby">
+      <div class="ui mini selection dropdown" id="dropNearby">
         <input type="hidden" name="gender">
         <i class="dropdown icon"></i>
         <div class="default text">Hospital</div>
