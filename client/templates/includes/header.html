@@ -8,17 +8,21 @@
       <a class="item {{isCurrentPage 'mapMain'}}" href="{{pathFor 'mapMain'}}" data-transition-out="slideFadeLeftOut" data-transition-in="slideFadeLeftIn" >Map</a>
 
       {{#if currentUser}}
-        <a class="item {{isCurrentPage 'postSubmit'}}" href="{{pathFor 'postSubmit'}}">Submit Post</a>
+        <a class="item {{isCurrentPage 'postSubmit'}}" id="submit">Submit Post</a>
       {{/if}}
       <a class="item {{isCurrentPage 'postsList'}}" href="{{pathFor 'postsList'}}" data-transition-out="slideFadeRightOut" data-transition-in="slideFadeRightIn" >History</a>
       <!-- <a class="item {{isCurrentPage 'postsList'}}" href="{{pathFor 'postsList'}}">History</a> -->
 
-      {{#if currentUser}}
+      <!-- {{#if currentUser}}
         <a class="item logout" href="#">logout</a>
-      {{/if}}
+      {{/if}} -->
 
+      <!-- <div class="ui button">{{admin}}</div>
+        <div class="ui flowing popup top left transition hidden">
+          <div class="ui button logout">Log out</div>
+        </div> -->
 
-        <a  class="item" href="#">{{admin}}</a>
+        <a  class="item logout" href="#" >{{admin}}</a>
 
 
 

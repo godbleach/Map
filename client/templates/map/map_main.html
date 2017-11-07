@@ -1,5 +1,6 @@
 <template name="mapMain">
    <div class="transitions-content" style="overflow :hidden;">
+     <div class="ui segment">
      {{#if currentUser}}
 
        {{#unless haveMark}}
@@ -17,6 +18,7 @@
            {{#each posts}}
              <!-- <div class="ui styled accordion"> -->
                {{>postItem}}
+               <br>
                <!-- </div> -->
            {{/each}}
          </div>
@@ -36,4 +38,5 @@
      <center><h1>Please  <a href="/">login</a> </h1></center>
      {{/if}}
    </div>
+ </div>
 </template>
