@@ -1,9 +1,18 @@
 <template name="postuser">
 
-        
+
         <div class="three wide column" id="line">{{stuId}}</div>
         <div class="eight wide column" id="line">{{firstName}} {{lastName}}</div>
         <div class="four wide column" id="line">{{faculty}}</div>
-        <div class="one wide column"><button  class="ui  mini olive submit button" id="check">check</button></div>
-    
+        <div class="one wide column">
+          <button  class="ui blue animated submit button" id="check">
+            <!-- <div class="ui animated button" tabindex="0"> -->
+              <div class="visible content">Check</div>
+              <div class="hidden content">
+                <i class="down arrow icon"></i>
+              </div>
+            <!-- </div> -->
+          </button>
+        </div>
+
 </template>
