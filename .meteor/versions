@@ -53,6 +53,7 @@ iron:url@1.1.0
 jamielob:transitions@2.0.4
 jquery@1.11.10
 juliancwirko:postcss@1.2.0
+juliancwirko:s-alert@3.2.0
 launch-screen@1.1.1
 less@2.7.9
 livedata@1.0.18
