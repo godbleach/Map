@@ -96,6 +96,7 @@ Template.postItem.events({
 
     let info = {
       userId : this.userId,
+      markId : markId,
       address : markId.address,
       admin : Meteor.user().username,
       date : date,
