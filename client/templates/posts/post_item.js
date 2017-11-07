@@ -83,6 +83,9 @@ Template.postItem.events({
   'click #check': function(e){
     // console.log( 'check'+ this._id);
     // console.log( 'check'+ Meteor.user().username);
+    console.log(Historys.findOne({ "$and": [{ "userId" :this.userId },{ "_id" :this._id } ] }))
+    // console.log(Historys.findOne({userId: this.userId}));
+    // console.log(this._id);
     if(Historys.findOne({userId: this.userId})){
       return;
     }
@@ -93,10 +96,11 @@ Template.postItem.events({
     var date = (month + "/" + day + "/" + year).toString();
     var d = new Date();
     var time = d.toLocaleTimeString();
+    // console.log(markId._id);
 
     let info = {
       userId : this.userId,
-      markId : markId,
+      markId : markId._id,
       address : markId.address,
       admin : Meteor.user().username,
       date : date,
