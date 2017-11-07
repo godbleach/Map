@@ -1,37 +1,26 @@
 <template name="historyUser">
 
-  <div class="transitions-content" style="overflow :hidden;">
-
-    <div class="ui grid" id="history-form">
-
-    <div class="ui grid center">
-        <div class="sixteen wide column"></div>
+    <div class="transitions-content" style="overflow :hidden;">
         <div class="ui raised segment">
-            <div class="transitions-content" style="overflow :hidden;">
-
-                <div class="ui grid" id="history-form">
+            <div class="ui grid" id="history-form">
 
 
-                    <div class="two wide column" id="line">Action date</div>
-                    <div class="three wide column" id="line">Time</div>
-                    <div class="eight wide column" id="line">Location</div>
-                    <div class="three wide column" id="line">Admin</div>
+                <div class="two wide column" id="line">Action date</div>
+                <div class="three wide column" id="line">Time</div>
+                <div class="eight wide column" id="line">Location</div>
+                <div class="three wide column" id="line">Admin</div>
 
 
-                    {{#each history}}
-                        <div class="two wide column" id="line">{{time}}</div>
+                {{#each history}}
+                    <div class="two wide column" id="line">{{time}}</div>
 
-                        <div class="three wide column" id="line">{{date}}</div>
+                    <div class="three wide column" id="line">{{date}}</div>
 
-                        <div class="eight wide column" id="line">{{address}}</div>
+                    <div class="eight wide column" id="line">{{address}}</div>
 
-                        <div class="three wide column" id="line">{{admin}}</div>
-                    {{/each}}
+                    <div class="three wide column" id="line">{{admin}}</div>
+                {{/each}}
 
-
-                  </div>
-                </div>
-              </div>
             </div>
         </div>
     </div>

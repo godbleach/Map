@@ -2,11 +2,11 @@
     border: solid;
     border-width: 2.5px;
     background: white;
-    border-color: olive; 
+    border-color: olive;
 }
 
 #history-form{
-    padding: 100px;
+    padding: 50px;
 }
 
 #box{
