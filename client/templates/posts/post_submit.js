@@ -19,7 +19,9 @@ Template.postSubmit.events({
     var post = {
       // url: $(e.target).find('[name=url]').val(),
       // title: $(e.target).find('[name=title]').val(),
+      uerId : this._id,
       userName : $(e.target).find('[name=userName]').val(),
+      stuId : $(e.target).find('[name=userName]').val(),
       firstName : $(e.target).find('[name=firstName]').val(),
       lastName : $(e.target).find('[name=lastName]').val(),
       bloodType : $(e.target).find('[name=bloodType]').val(),

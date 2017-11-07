@@ -5,8 +5,8 @@
         <div class="sixteen wide column"></div>
         <div class="four wide column">
 
-          <div class="ui card" style="margin-top: 2cm;">
-            <div class="image">
+          <div class="ui card" >
+            <div class="image" style="margin-top: 0cm;">
               <img src="https://reg2.src.ku.ac.th/picnisit/{{stuId}}.jpg">
             </div>
             <div class="content">
@@ -59,11 +59,25 @@
 
         <div class="ui modal">
           <div class="image content" >
-            <div id="carousel">
+            <!-- Swiper -->
+            <div class="swiper-container">
+              <div class="swiper-wrapper">
+                {{#each image in imageFile.each}}
+                  <div class="swiper-slide">
+                    <img style="margin-top: 0.25cm;" class="ui rounded image" src="{{image.link}}" alt="{{image.name}}" />
+                  </div>
+                {{/each}}
+
+              </div>
+              <!-- Add Arrows -->
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
+            </div>
+            <!-- <div id="carousel">
               {{#each image in imageFile.each}}
                 <div ><img style="margin-top: 0.25cm;" class="ui rounded image" src="{{image.link}}" alt="{{image.name}}" /></div>
               {{/each}}
-            </div>
+            </div> -->
           </div>
         </div>
         <br>
