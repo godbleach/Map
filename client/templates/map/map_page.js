@@ -19,6 +19,7 @@ Template.mapPage.helpers({
 });
 
 Meteor.subscribe('markers');
+Meteor.subscribe('nearbys');
 
 Template.mapPage.onCreated(function() {
 
@@ -28,6 +29,7 @@ Template.mapPage.onCreated(function() {
        google.maps.event.addListener(map.instance, 'click', function(event) {
         var point = {userId: Meteor.userId(),lat: event.latLng.lat(), lng: event.latLng.lng()};
         Meteor.call('markInsert',point);
+        // Meteor.call('insertNearby',point);
       });
 
        console.log(document.getElementById('info-content'));
