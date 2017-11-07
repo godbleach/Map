@@ -175,7 +175,8 @@ body {
 }
 
 .ui.container {
-    width: 1500px;
+    width: 97%;
+    height: 100%;
     margin-left: auto !important;
     margin-right: auto !important;
 }

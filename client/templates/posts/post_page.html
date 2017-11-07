@@ -50,36 +50,26 @@
             {{#each image in imageFile.each}}
             <div class="ui link card" id="showImage">
               <div class="ui image" style="margin-top: 0cm;">
+                <a href="{{image.link}}">
                   <img src="{{image.link}}" />
+                </a>          
               </div>
             </div>
             {{/each}}
 
           </div>
 
-        <div class="ui modal">
-          <div class="image content" >
-            <!-- Swiper -->
-            <div class="swiper-container">
-              <div class="swiper-wrapper">
+          <!-- <div class="ui modal">
+            <div class="image content" >
+              <div id="carousel">
                 {{#each image in imageFile.each}}
-                  <div class="swiper-slide">
-                    <img style="margin-top: 0.25cm;" class="ui rounded image" src="{{image.link}}" alt="{{image.name}}" />
-                  </div>
+                  <div ><img src="{{image.link}}" /></div>
                 {{/each}}
-
               </div>
-              <!-- Add Arrows -->
-              <div class="swiper-button-next"></div>
-              <div class="swiper-button-prev"></div>
+
             </div>
-            <!-- <div id="carousel">
-              {{#each image in imageFile.each}}
-                <div ><img style="margin-top: 0.25cm;" class="ui rounded image" src="{{image.link}}" alt="{{image.name}}" /></div>
-              {{/each}}
-            </div> -->
-          </div>
-        </div>
+          </div> -->
+
         <br>
         <hr>
         <!-- end Image -->
@@ -103,4 +93,6 @@
       </div>
     </div>
   </div>
+
+
 </template>

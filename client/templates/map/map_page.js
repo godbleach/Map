@@ -3,10 +3,6 @@ Meteor.startup(function() {
 });
 
 
-// Template.mapPage.rendered({
-//   this.$('#start').transition('fade up');
-// });
-
 Template.mapPage.helpers({
   mapOptions: function() {
     if (GoogleMaps.loaded()) {
@@ -24,7 +20,7 @@ Template.mapPage.helpers({
 
 Meteor.subscribe('markers');
 
-Template.mapPage.onCreated(function() {0
+Template.mapPage.onCreated(function() {
 
   // We can use the `ready` callback to interact with the map API once the map is ready.
 	GoogleMaps.ready('mapEx', function(map) {
@@ -116,6 +112,8 @@ Template.mapPage.onCreated(function() {0
               }
             });
 
+            clearMarkers();
+            clearResults();
             // nearby(latlng);
             //
             // service.nearbySearch({
