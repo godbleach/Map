@@ -4,6 +4,7 @@ Meteor.startup(function() {
 
 
 Template.mapPage.helpers({
+
   mapOptions: function() {
     if (GoogleMaps.loaded()) {
       return {
@@ -42,7 +43,7 @@ Template.mapPage.onCreated(function() {
         });
         var s = new buzz.sound('/sounds/alert1.wav');
         s.play();
-       
+
       });
 
       //  console.log(document.getElementById('info-content'));
@@ -74,7 +75,15 @@ Template.mapPage.onCreated(function() {
 
             Session.set('lat',0);
             Session.set('lng',0);
+
+            //
+            // for(let i = 0; i < Session.get('markLength'); i++){
+            //   console.log('markkkkk');
+            //   console.log(markers2[i]);
+            //    markers2[i].setMap(map.instance);
+            // }
           }
+
 
           // if(Session.get('nearLatLng')) {
           //   let xy = Session.get('nearLatLng');
@@ -127,22 +136,11 @@ Template.mapPage.onCreated(function() {
               }
             });
 
-            clearMarkers();
-            clearResults();
-            // nearby(latlng);
-            //
-            // service.nearbySearch({
-            //     location: latlng,
-            //     radius: 1000,
-            //     type: ['hospital'],
-            //   }, function(results, status){
-            //     if (status === google.maps.places.PlacesServiceStatus.OK) {
-            //       for (var i = 0; i < results.length; i++) {
-            //         createMarker(results[i],i);
-            //       }
-            //     }
-            //   }
-            // );
+            var postId = Posts.findOne({userId: document.userId});
+            console.log(postId._id);
+            Session.set('nearby',postId._id);
+            nearby(latlng);
+
             console.log('observe - add - ' + document._id + ' ' + document.userId);
           },
 
@@ -213,7 +211,7 @@ Template.mapPage.onCreated(function() {
         });
 
         function nearby(xy){
-          console.log("hi");
+          // console.log("hi");
           clearMarkers();
           clearResults();
           service.nearbySearch({
@@ -222,6 +220,7 @@ Template.mapPage.onCreated(function() {
               type: ['hospital'],
             }, function(results, status){
               if (status === google.maps.places.PlacesServiceStatus.OK) {
+                Session.set('markLength',results.length);
                 for (var i = 0; i < results.length; i++) {
                   createMarker(results[i],i);
                 }
@@ -236,6 +235,7 @@ Template.mapPage.onCreated(function() {
 
           var placeLoc = place.geometry.location;
 
+          console.log('add_Mark_Near');
           markers2[j] = new google.maps.Marker({
             map: map.instance,
             position: placeLoc,
@@ -253,19 +253,19 @@ Template.mapPage.onCreated(function() {
         }
 
         function clearMarkers() {
-          console.log(markers2.length);
+          // console.log(markers2.length);
           for (var i = 0; i < markers2.length; i++) {
             if (markers2[i]) {
               markers2[i].setMap(null);
             }
           }
           markers2 = [];
-          console.log(markers2.length);
+          // console.log(markers2.length);
         }
 
         function addResult(result, i,m) {
           //  var results = $('#results');Session.get('lng')
-          console.log(Session.get('nearby'));
+          // console.log(Session.get('nearby'));
           // var results = document.getElementById(Session.get('nearby'));
           // //  var results = document.getElementById('results');
           //  var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
@@ -305,7 +305,7 @@ Template.mapPage.onCreated(function() {
        function clearResults() {
          var results = document.getElementById(Session.get('nearby'));
         //  var results = document.getElementById('results');
-         console.log(Session.get('nearby'));
+         // console.log(Session.get('nearby'));
          if(results){
            while (results.childNodes[0]) {
              results.removeChild(results.childNodes[0]);

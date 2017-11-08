@@ -108,7 +108,7 @@ Template.postItem.events({
       if(Historys.findOne({ "$and": [{ userId :this.userId },{ markId :markid } ] })){
         return;
       }
-        
+
     }
     var markId = Markers.findOne({userId: this.userId});
     var year = new Date().getFullYear();
