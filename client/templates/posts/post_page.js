@@ -42,7 +42,8 @@ Template.postPage.events({
 
     'click .link.card#showImage': function (e,template) {
       console.log('modal');
-      template.$('.ui.modal').modal('toggle');
+      // Router.go("/posts/image/"+this._id);
+      // template.$('.ui.modal').modal('toggle');
 
     },
   });

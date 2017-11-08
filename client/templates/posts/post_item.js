@@ -1,4 +1,4 @@
-import { Sounds, Images } from '/lib/collections/files.js';
+import { Files } from '/lib/collections/files.js';
 import './post_item.html';
 
 var handle = Meteor.subscribe('historys');
@@ -55,6 +55,11 @@ Template.postItem.events({
     // console.log(markId);
     Markers.remove(markId._id);
 
+    var allFiles = Files.find({userId: this.userId}).fetch();
+    console.log(allFiles);
+    for(let i=0; i<allFiles.length;i++){
+      Meteor.call('fileRemove',allFiles[i]._id);
+    }
   },
 
   'click .button#info': function(e){

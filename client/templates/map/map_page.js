@@ -19,6 +19,7 @@ Template.mapPage.helpers({
 });
 
 Meteor.subscribe('markers');
+Meteor.subscribe('nearbys');
 
 Template.mapPage.onCreated(function() {
 

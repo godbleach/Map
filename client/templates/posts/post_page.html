@@ -1,6 +1,6 @@
 <template name="postPage">
   <div class="transitions-content" style="overflow :hidden;">
-    <div class="ui segment">
+    <div class="ui segment" style="height:1000px; overflow-y:auto; white-space:nowrap;">
       <div class="ui grid">
         <div class="sixteen wide column"></div>
         <div class="four wide column">
@@ -50,16 +50,17 @@
             {{#each image in imageFile.each}}
             <div class="ui link card" id="showImage">
               <div class="ui image" style="margin-top: 0cm;">
-                <a href="{{image.link}}">
+                <a target ="_blank" href="{{image.link}}">
                   <img src="{{image.link}}" />
-                </a>          
+                </a>
               </div>
             </div>
             {{/each}}
 
           </div>
 
-          <!-- <div class="ui modal">
+
+          <div class="ui modal">
             <div class="image content" >
               <div id="carousel">
                 {{#each image in imageFile.each}}
@@ -68,7 +69,7 @@
               </div>
 
             </div>
-          </div> -->
+          </div>
 
         <br>
         <hr>
