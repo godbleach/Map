@@ -16,7 +16,7 @@ Template.postItem.helpers({
   },
 
   nearby: function(){
-    console.log(this._id);
+    // console.log(this._id);
     return this._id;
   },
 
@@ -36,9 +36,17 @@ Template.postItem.helpers({
 
   checked: function(){
     // console.log(Historys.find().fetch());
+    // var h = Historys.findOne({userId: this.userId});
+    // var markid = h.markId;
+    // console.log(markid);
     if(Historys.findOne({userId: this.userId})){
-      console.log("hereeeeeeeeeeeeee");
-      return true;
+      var h = Markers.findOne({userId: this.userId});
+      var markid = h._id;
+      console.log(markid);
+      console.log(Historys.findOne({ "$and": [{ userId :this.userId },{ markId :markid } ] }))
+      if(Historys.findOne({ "$and": [{ userId :this.userId },{ markId :markid } ] })){
+        return true;
+      }
     }
     return false;
   },
@@ -88,11 +96,19 @@ Template.postItem.events({
   'click #check': function(e){
     // console.log( 'check'+ this._id);
     // console.log( 'check'+ Meteor.user().username);
-    console.log(Historys.findOne({ "$and": [{ "userId" :this.userId },{ "_id" :this._id } ] }))
-    // console.log(Historys.findOne({userId: this.userId}));
-    // console.log(this._id);
+    // console.log(Historys.findOne({ "$and": [{ "userId" :this.userId },{ "_id" :this._id } ] }))
+    // console.log(Historys.findOne({userId: this.userId},{_id:this._id}));
+    // console.log(this.markId);
+    // var h = Historys.findOne({userId: this.userId});
+    // var markid = h.markId;
+    // console.log(Historys.findOne({userId: this.userId},{markId: markid}));
     if(Historys.findOne({userId: this.userId})){
-      return;
+      var h = Markers.findOne({userId: this.userId});
+      var markid = h._id;
+      if(Historys.findOne({ "$and": [{ userId :this.userId },{ markId :markid } ] })){
+        return;
+      }
+        
     }
     var markId = Markers.findOne({userId: this.userId});
     var year = new Date().getFullYear();
