@@ -70,7 +70,7 @@ Template.mapPage.onCreated(function() {
         Tracker.autorun(function() {
           if(Session.get('lat') && Session.get('lng')) {
             let xy = {lat: Session.get('lat'), lng: Session.get('lng') };
-            nearby(xy)
+            // nearby(xy)
             GoogleMaps.maps.mapEx.instance.setCenter({ lat: Session.get('lat'), lng: Session.get('lng') });
 
             Session.set('lat',0);
