@@ -9,25 +9,26 @@ function getExtension(filename) {
 };
 
 function isFile(filename) {
-  var ext = getExtension(filename);
-  switch (ext.toLowerCase()) {
-  case 'jpg':
-  case 'jpeg':
-  case 'gif':
-  case 'bmp':
-  case 'png':
-
-  case 'mp3':
-  case '3gpp':
-  case 'ogg':
-  case 'm4a':
-  case 'caf':
-
-  case 'mp4':
-      //etc
-      return true;
-  }
-  return false;
+  return true;
+  // var ext = getExtension(filename);
+  // switch (ext.toLowerCase()) {
+  // case 'jpg':
+  // case 'jpeg':
+  // case 'gif':
+  // case 'bmp':
+  // case 'png':
+  //
+  // case 'mp3':
+  // case '3gpp':
+  // case 'ogg':
+  // case 'm4a':
+  // case 'caf':
+  //
+  // case 'mp4':
+  //     //etc
+  //     return true;
+  // }
+  // return false;
 };
 
 // function isImage(filename) {
