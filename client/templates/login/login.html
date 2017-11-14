@@ -15,45 +15,47 @@
 		</form>
 
 	{{/if}} -->
-	<div class="form-signin">
-			<div class="ui small image">
-					<img src="/public/logo/Emergenza-logo.png" class="image">
-				</div>
-		<div class="ui middle aligned center aligned grid">
-			<div id="column">
-			<h2 class="ui black header">
+	{{#if currentUser}}
+		{{ >mapMain	}}
+	{{else}}
+		<div class="form-signin">
 
-				<div class="content">
-				Log-in to your account
-				</div>
-			</h2>
-			<form class="ui large form">
-				<div class="ui stacked segment">
-				<div class="field">
-					<div class="ui left icon input">
-					<i class="user icon"></i>
+			<div class="ui two column centered grid">
+				<div id="column">
+				<h2 class="ui black header">
 
-					<input type="email" name="email" id="email" class="form-control" placeholder="Email Address">
+					<div class="content">
+					Log-in to your account
 					</div>
-				</div>
-				<div class="field">
-					<div class="ui left icon input">
-					<i class="lock icon"></i>
+				</h2>
+				<form class="ui large form">
+					<div class="ui stacked segment">
+					<div class="field">
+						<div class="ui left icon input">
+						<i class="user icon"></i>
 
-					<input type="password" name="password" id="password" class="form-control" placeholder="Password">
+						<input type="email" name="email" id="email" class="form-control" placeholder="Email Address">
+						</div>
 					</div>
-				</div>
-				<!-- <div class="ui fluid large teal submit button" >Login</div> -->
-				<button type="submit" id="login-btn" class="ui fluid large blue submit button">Login</button>
-				</div>
+					<div class="field">
+						<div class="ui left icon input">
+						<i class="lock icon"></i>
 
-			</form>
+						<input type="password" name="password" id="password" class="form-control" placeholder="Password">
+						</div>
+					</div>
+					<!-- <div class="ui fluid large teal submit button" >Login</div> -->
+					<button type="submit" id="login-btn" class="ui fluid large blue submit button">Login</button>
+					</div>
 
-			<div class="ui message">
-				New to us? <a href="/signup">Sign Up</a>
-			</div>
+				</form>
+
+				<div class="ui message">
+					New to us? <a href="/signup">Sign Up</a>
+				</div>
+				</div>
 			</div>
 		</div>
+	{{/if}}
 	</div>
-</div>
 </template>
