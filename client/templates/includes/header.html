@@ -4,14 +4,14 @@
       <div class="header left item">
 
         <i class="map icon"></i>
-        <a>Emergency System</a>
+        <a>Emergency System &nbsp;</a>
         <i class="map icon"></i>
 
       </div>
       <a class="item {{isCurrentPage 'mapMain'}}" href="{{pathFor 'mapMain'}}" data-transition-out="slideFadeLeftOut" data-transition-in="slideFadeLeftIn" >Map</a>
-      {{#if currentUser}}
+      <!-- {{#if currentUser}}
         <a class="item {{isCurrentPage 'postSubmit'}}" id="submit">TestUser</a>
-      {{/if}}
+      {{/if}} -->
       <a class="item {{isCurrentPage 'postsList'}}" href="{{pathFor 'postsList'}}" data-transition-out="slideFadeRightOut" data-transition-in="slideFadeRightIn" >History</a>
       <!-- <a class="item {{isCurrentPage 'postsList'}}" href="{{pathFor 'postsList'}}">History</a> -->
       <!-- {{#if currentUser}}

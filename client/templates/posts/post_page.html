@@ -33,7 +33,7 @@
           <div class="ui three doubling cards" >
           {{#each sound in audioFile.each}}
             <div class="ui link card">
-                <audio class="center float" height="auto" controls preload="auto" autoplay>
+                <audio class="center float" height="auto" controls preload="auto" autoplay style="width: 100%;">
                   <source src="{{sound.link}}" type="{{sound.type}}" />
                 </audio>
             </div>
@@ -80,7 +80,7 @@
           <div class="ui three doubling cards" >
             {{#each video in videoFile.each}}
               <div class="ui link card">
-                  <video class="center float" width="346.49" height="216.55" controls >
+                  <video class="center float" width="346.49" height="216.55" controls style="width: 100%;">
                     <source src="{{video.link}}" type="video/mp4">
                   </video>
               </div>
