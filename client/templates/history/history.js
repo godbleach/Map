@@ -5,5 +5,4 @@ Template.historyUser.helpers({
       let path = url.split( '/' );
       return Historys.find({userId:path[2] });
     }
-
 });
